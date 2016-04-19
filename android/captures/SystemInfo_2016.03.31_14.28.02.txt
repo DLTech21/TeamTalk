@@ -1,0 +1,52 @@
+Activity Resolver Table:
+  Schemes:
+      com.mogujie.tt:
+        42394298 com.mogujie.tt/.ui.activity.WebViewFragmentActivity filter 42399a88
+          Action: "android.intent.action.VIEW"
+          Category: "android.intent.category.DEFAULT"
+          Scheme: "com.mogujie.tt"
+
+  Non-Data Actions:
+      android.intent.action.MAIN:
+        43b1b780 com.mogujie.tt/.ui.activity.LoginActivity filter 446822f8
+          Action: "android.intent.action.MAIN"
+          Category: "android.intent.category.LAUNCHER"
+
+Key Set Manager:
+  [com.mogujie.tt]
+      Signing KeySets: 5
+
+Packages:
+  Package [com.mogujie.tt] (432c2050):
+    userId=10404 gids=[3003, 1028, 1015, 1023]
+    pkg=Package{42d159d0 com.mogujie.tt}
+    codePath=/data/app/com.mogujie.tt-1.apk
+    resourcePath=/data/app/com.mogujie.tt-1.apk
+    nativeLibraryPath=/data/app-lib/com.mogujie.tt-1
+    versionCode=5 targetSdk=19
+    versionName=2.0.0
+    applicationInfo=ApplicationInfo{42dfc580 com.mogujie.tt}
+    flags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP LARGE_HEAP ]
+    mtkFlags=[ ]
+    dataDir=/data/data/com.mogujie.tt
+    supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]
+    timeStamp=2016-03-31 14:22:55
+    firstInstallTime=2016-03-30 22:57:04
+    lastUpdateTime=2016-03-31 14:22:56
+    signatures=PackageSignatures{432c20e8 [4313a448]}
+    permissionsFixed=true haveGids=true installStatus=1
+    pkgFlags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP LARGE_HEAP ]
+    User 0:  installed=true blocked=false stopped=false notLaunched=false enabled=0
+    grantedPermissions:
+      android.permission.READ_EXTERNAL_STORAGE
+      android.permission.READ_PHONE_STATE
+      android.permission.GET_TASKS
+      android.permission.WRITE_EXTERNAL_STORAGE
+      android.permission.INTERNET
+      android.permission.VIBRATE
+      android.permission.ACCESS_WIFI_STATE
+      android.permission.CALL_PHONE
+      android.permission.WAKE_LOCK
+      android.permission.ACCESS_NETWORK_STATE
+      android.permission.RECORD_AUDIO
+      android.permission.MODIFY_AUDIO_SETTINGS

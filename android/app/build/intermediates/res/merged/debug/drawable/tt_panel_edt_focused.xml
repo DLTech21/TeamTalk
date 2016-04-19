@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <solid android:color="#FFFFFF" />
+
+    <corners android:radius="3dip" />
+
+    <stroke
+        android:width="1dip"
+        android:color="#728ea3" />
+
+</shape><!-- From: file:/Users/Donal/Documents/develop/tt-android/app/src/main/res/drawable/tt_panel_edt_focused.xml -->

@@ -1,0 +1,9 @@
+<set xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <alpha
+        android:duration="200"
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0" />
+
+</set>
+<!-- From: file:/Users/Donal/Documents/develop/tt-android/app/src/main/res/anim/tt_speeker_in.xml -->
