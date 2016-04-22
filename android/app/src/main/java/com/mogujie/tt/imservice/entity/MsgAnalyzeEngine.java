@@ -95,6 +95,12 @@ public class MsgAnalyzeEngine {
 
             case MSG_TYPE_SINGLE_FILE:
             case MSG_TYPE_GROUP_FILE:
+                try {
+                    return FileMessage.parseFromNet(messageEntity);
+                } catch (JSONException e) {
+                    // e.printStackTrace();
+                    return null;
+                }
 
             case MSG_TYPE_GROUP_EMOTION:
             case MSG_TYPE_SINGLE_EMOTION:

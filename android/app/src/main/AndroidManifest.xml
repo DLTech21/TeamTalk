@@ -2,6 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mogujie.tt">
 
+    <permission android:name="com.mogujie.tt.permission.RECEIVE_MSG"
+        android:protectionLevel="signature"/>
+    <permission android:name="com.mogujie.tt.permission.INCOMING_CALL"
+        android:protectionLevel="signature"/>
+    // 接收 SDK 消息广播权限， 第三方 APP 接入时，请将 com.yuntongxun.ecdemo 替换为自己的包名
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="com.mogujie.tt.permission.RECEIVE_MSG" />
+    // 如果没有VOIP功能可以忽略
+    <uses-permission android:name="com.mogujie.tt.permission.INCOMING_CALL" />
+
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -73,7 +87,7 @@
             android:exported="false" >
         </service>
         <service android:name=".imservice.service.LoadImageService" />
-
+        <service android:name=".imservice.service.LoadFileService" />
         <activity
             android:name=".ui.activity.PickPhotoActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -151,6 +165,83 @@
             >
         </activity>
 
+        <activity
+            android:name=".ui.activity.BaiduMapActivity"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+        <activity
+            android:name=".ui.activity.BaiduMapSearchActivity"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+        <activity
+            android:name=".ui.activity.LocationCheckActivity"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+
+        <activity
+            android:name=".ui.plugin.FileExplorerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+
+        <activity
+            android:name=".voip.VoIPCallActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="com.mogujie.tt.intent.ACTION_VOICE_CALL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 百度地图所需的service -->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="MnGWQh9tr1e8cDEV2lcy7SKmheYV36s0" />
+
+        // SDK核心服务配置
+        <service android:name="com.yuntongxun.ecsdk.ECClientService"
+            android:enabled="true" android:process=":push" />
+        // 以下两项为SDK事件提醒广播
+        <receiver android:name="com.yuntongxun.ecsdk.booter.CCPReceivers$AlarmReceiver"
+            android:process=":push" />
+        // v5.1.9r增加配置选项
+        <receiver android:name="com.yuntongxun.ecsdk.booter.Alarm"
+            android:exported="false" android:process=":push"/>
+        // SDK网络改变广播
+        <receiver
+            android:name="com.yuntongxun.ecsdk.booter.CCPReceivers$ConnectionReceiver"
+            android:process=":push">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        // SDK广播通知配置（开机广播）
+        // 可选广播、如果应用想做开机重启，可以实现该广播通知即可
+        <receiver
+            android:name="com.yuntongxun.ecsdk.booter.CCPReceivers$BootReceiver"
+            android:process=":push">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        // 配置SDK消息通知广播 ,SDK通知会分三种提醒方式
+        // 1、直接通过设置的回调接口（OnChatReceiveListener）Push给应用
+        // 2、如果应用没有设置回调接口则采用（BroadcastReceiver）广播通知（v5.1.8版本）
+        //    此时如果应用处于未运行状态则会直接唤醒应用处理
+        // 3、如果应用未处于运行状态并且不想被唤醒应用运行则采用状态栏通知处理（SDK直接提醒，不会通知应用）,比如调用
+        // ECDevice#logout(ECDevice.NotifyMode, ECDevice.OnLogoutListener)退出接口传入后台接收消息才会有提醒
+
+        // 注意：以上在a和b的场景下，SDK都会将消息直接给应用处理，只有在c的情况SDK才会直接处理消息提醒，
+        //    所以应用需要处理a和b两种情况
+        // 声明自定义通知的广播接收器，第三方 APP 集成时，action 中的 com.yuntongxun.ecdemo 请替换为自己的包名
     </application>
 
 </manifest>

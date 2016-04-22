@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.Window;
 
 import com.mogujie.tt.R;
+import com.mogujie.tt.SDKCoreHelper;
 import com.mogujie.tt.config.IntentConstant;
 import com.mogujie.tt.imservice.event.LoginEvent;
 import com.mogujie.tt.imservice.event.UnreadEvent;
@@ -16,6 +17,7 @@ import com.mogujie.tt.ui.fragment.ContactFragment;
 import com.mogujie.tt.imservice.support.IMServiceConnector;
 import com.mogujie.tt.utils.Logger;
 import com.mogujie.tt.ui.widget.NaviTabButton;
+import com.yuntongxun.ecsdk.ECInitParams;
 
 import de.greenrobot.event.EventBus;
 
@@ -47,7 +49,7 @@ public class MainActivity extends FragmentActivity{
 			jumpToLoginPage();
 			finish();
 		}
-
+		SDKCoreHelper.init(this, ECInitParams.LoginMode.FORCE_LOGIN);
         // 在这个地方加可能会有问题吧
         EventBus.getDefault().register(this);
 		imServiceConnector.connect(this);

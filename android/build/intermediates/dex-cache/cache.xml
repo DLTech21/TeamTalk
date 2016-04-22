@@ -2,88 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/Users/Donal/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.0.0/2534c458682c73f5b9871131ab3098d3f987ca3/okio-1.0.0.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="02534c458682c73f5b9871131ab3098d3f987ca3">
-        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/okio-1.0.0-bc763c0da28c904a6d21b11fec6e0d1cdc804575.jar" />
-    </item>
-    <item
-        jar="/Users/Donal/Library/Android/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
-        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0-48dbada69914e26b48233c16b8d1395825dcafd6.jar" />
-    </item>
-    <item
-        jar="/Users/Donal/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/2.6.1/d9521f2aecb909835746b7a5facf612af5e890e8/protobuf-java-2.6.1.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="d9521f2aecb909835746b7a5facf612af5e890e8">
-        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/protobuf-java-2.6.1-0c6b62c209ec52400f03a739faa9501d8c16c96a.jar" />
-    </item>
-    <item
         jar="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28">
         <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/classes-f3002d41e39c73f2a98398998fa5001919a1c918.jar" />
-    </item>
-    <item
-        jar="/Users/Donal/Documents/develop/tt-android/app/libs/universal-image-loader-1.9.3.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="a85588bec3e2c4584d593d3f15df1677321bca72">
-        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.3-8469d99fae634766068aaa92850b53cef84814f2.jar" />
-    </item>
-    <item
-        jar="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/exploded-aar/tt-android/mgimlibs/unspecified/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="408b733170de3f9580cac1a23e0e7aa436e8e514">
-        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/classes-76bc033d7cecc6a2b66a5b2588a9bb7ef38b6320.jar" />
-    </item>
-    <item
-        jar="/Users/Donal/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp-urlconnection/2.0.0/afe8399d352713b66e597e9670c741d1e60ae923/okhttp-urlconnection-2.0.0.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="afe8399d352713b66e597e9670c741d1e60ae923">
-        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-2.0.0-6e4d0b904fc680032ea1d90ca0665c386b0f7a2b.jar" />
-    </item>
-    <item
-        jar="/Users/Donal/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.0.0/4c8d1536dba3812cc1592090dc20c47a4ed3c35e/okhttp-2.0.0.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="4c8d1536dba3812cc1592090dc20c47a4ed3c35e">
-        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/okhttp-2.0.0-b6ec4450385bfd3e336ad4cfaa1f48ad6a99a404.jar" />
-    </item>
-    <item
-        jar="/Users/Donal/.gradle/caches/modules-2/files-2.1/de.greenrobot/greendao/1.3.7/dda08161d004c4df96938da6909f1c2b96cd33c8/greendao-1.3.7.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="dda08161d004c4df96938da6909f1c2b96cd33c8">
-        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/greendao-1.3.7-971d450eb5cb4b22bae4d0b509df51457e4e398f.jar" />
-    </item>
-    <item
-        jar="/Users/Donal/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/gson-2.3.1-b71263c11207576ae97128202abcd93aa04be28e.jar" />
-    </item>
-    <item
-        jar="/Users/Donal/Documents/develop/tt-android/app/libs/android-async-http-1.4.6.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="a845a88238be0b5be9d238652c1bc0605ef91f52">
-        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.6-d8654c50cc79c107c690ce51ed67bd7dccf51d99.jar" />
-    </item>
-    <item
-        jar="/Users/Donal/.gradle/caches/modules-2/files-2.1/com.alibaba/fastjson/1.2.6/b74bde9cceb2f9ec1077a9c7c3a007c251531ba6/fastjson-1.2.6.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="b74bde9cceb2f9ec1077a9c7c3a007c251531ba6">
-        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/fastjson-1.2.6-d5d238c6f2ec738e0cd2d219623fa63c4dbd2def.jar" />
     </item>
     <item
         jar="/Users/Donal/.gradle/caches/modules-2/files-2.1/de.greenrobot/eventbus/2.4.0/ddd166d01b3158d1c00576d29f7ed15c030df719/eventbus-2.4.0.jar"
@@ -93,11 +16,39 @@
         <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/eventbus-2.4.0-7680ff1ec750c9a8f44cc3c7fed6044956535b0f.jar" />
     </item>
     <item
-        jar="/Users/Donal/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.4/b1b6ea3b7e4aa4f492509a4952029cd8e48019ad/commons-io-2.4.jar"
+        jar="/Users/Donal/Documents/develop/tt-android/app/libs/baidumapapi_search_v3_7_0.jar"
         jumboMode="false"
         revision="21.1.1"
-        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad">
-        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/commons-io-2.4-08120ba76fbd9054951385bcff78b92404d5c742.jar" />
+        sha1="934d5f6ca26f082fbe8bf17767caa530e37d1dfa">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/baidumapapi_search_v3_7_0-d5d2ff5e8d4e5c0f9e6ba13ec9b21e3f485e86b0.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/.gradle/caches/modules-2/files-2.1/de.greenrobot/greendao/1.3.7/dda08161d004c4df96938da6909f1c2b96cd33c8/greendao-1.3.7.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="dda08161d004c4df96938da6909f1c2b96cd33c8">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/greendao-1.3.7-971d450eb5cb4b22bae4d0b509df51457e4e398f.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/Documents/develop/tt-android/app/libs/xUtils-2.6.7.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="c42ff65f4c9401024b06ea93b44ee3b30d0e38b4">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/xUtils-2.6.7-a864422d33a3439f9c1daea373e4e11903e7eca1.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/Documents/develop/tt-android/app/libs/android-async-http-1.4.6.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="a845a88238be0b5be9d238652c1bc0605ef91f52">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.6-d8654c50cc79c107c690ce51ed67bd7dccf51d99.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/exploded-aar/tt-android/mgimlibs/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="828d7694be53dda9005eed9ba0d0f94c0d9fb865">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/classes-76bc033d7cecc6a2b66a5b2588a9bb7ef38b6320.jar" />
     </item>
     <item
         jar="/Users/Donal/Documents/develop/tt-android/app/libs/netty-3.6.6.Final.jar"
@@ -105,6 +56,118 @@
         revision="21.1.1"
         sha1="e4e40738ce9bee0a92389cb739c94d7839778647">
         <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/netty-3.6.6.Final-170cd0c8f4c94e6f33867182f9653c71ad441f19.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp-urlconnection/2.0.0/afe8399d352713b66e597e9670c741d1e60ae923/okhttp-urlconnection-2.0.0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="afe8399d352713b66e597e9670c741d1e60ae923">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-2.0.0-6e4d0b904fc680032ea1d90ca0665c386b0f7a2b.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/Documents/develop/tt-android/app/libs/Yuntx_FullLib_v5.2.0r2.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="d4fc0a8a378c129ad60b38a64c27c4e2eb41514f">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/Yuntx_FullLib_v5.2.0r2-3b5818aa9a18c403eb8173de4f2baf58c19dfa41.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/Documents/develop/tt-android/app/libs/universal-image-loader-1.9.3.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="a85588bec3e2c4584d593d3f15df1677321bca72">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.3-8469d99fae634766068aaa92850b53cef84814f2.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/Documents/develop/tt-android/app/libs/baidumapapi_map_v3_7_0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="534f8d224f352bba70229230b79028cab1e7859c">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/baidumapapi_map_v3_7_0-866d687d8cd06c56ceaab15f584b78df617756a3.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/.gradle/caches/modules-2/files-2.1/com.alibaba/fastjson/1.2.6/b74bde9cceb2f9ec1077a9c7c3a007c251531ba6/fastjson-1.2.6.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="b74bde9cceb2f9ec1077a9c7c3a007c251531ba6">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/fastjson-1.2.6-d5d238c6f2ec738e0cd2d219623fa63c4dbd2def.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/gson-2.3.1-b71263c11207576ae97128202abcd93aa04be28e.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/Documents/develop/tt-android/app/libs/locSDK_6.13.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="2cdb37444b41b42e1ce5a8a27e5d3c22e1c57479">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/locSDK_6.13-fc2b54a564d3c27eaa42e3ae3d9f8ed82ad9b09f.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/Library/Android/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0-48dbada69914e26b48233c16b8d1395825dcafd6.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/Documents/develop/tt-android/app/libs/baidumapapi_base_v3_7_0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="18e10945278df7f556e2e336a826b0db965dce51">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/baidumapapi_base_v3_7_0-45c6a73ce211a41d085605caed067414bc5e15cd.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/Documents/develop/tt-android/app/libs/baidumapapi_radar_v3_7_0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="15ca4625795ed40520a94e7ef1aa53791f9e17fe">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/baidumapapi_radar_v3_7_0-d2a7e7460cf5d7574ef77bafbe81e2a55c95801e.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/Documents/develop/tt-android/app/libs/baidumapapi_cloud_v3_7_0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="6d11ba6426881d142f67c539d8a13d19446ac895">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/baidumapapi_cloud_v3_7_0-6b6a98880c2d69867f2b0514f18dc889118c059b.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/Documents/develop/tt-android/app/libs/baidumapapi_util_v3_7_0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="72003ec5efa50c2e02266e1ad7ebefaca7d017d6">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/baidumapapi_util_v3_7_0-b791bff34ad997e56dfcb5a3f1350bf6fd5c2046.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.0.0/4c8d1536dba3812cc1592090dc20c47a4ed3c35e/okhttp-2.0.0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="4c8d1536dba3812cc1592090dc20c47a4ed3c35e">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/okhttp-2.0.0-b6ec4450385bfd3e336ad4cfaa1f48ad6a99a404.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/2.6.1/d9521f2aecb909835746b7a5facf612af5e890e8/protobuf-java-2.6.1.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="d9521f2aecb909835746b7a5facf612af5e890e8">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/protobuf-java-2.6.1-0c6b62c209ec52400f03a739faa9501d8c16c96a.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.0.0/2534c458682c73f5b9871131ab3098d3f987ca3/okio-1.0.0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="02534c458682c73f5b9871131ab3098d3f987ca3">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/okio-1.0.0-bc763c0da28c904a6d21b11fec6e0d1cdc804575.jar" />
+    </item>
+    <item
+        jar="/Users/Donal/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.4/b1b6ea3b7e4aa4f492509a4952029cd8e48019ad/commons-io-2.4.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad">
+        <dex dex="/Users/Donal/Documents/develop/tt-android/app/build/intermediates/pre-dexed/debug/commons-io-2.4-08120ba76fbd9054951385bcff78b92404d5c742.jar" />
     </item>
 
 </items>

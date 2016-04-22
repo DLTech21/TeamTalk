@@ -90,16 +90,25 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="okhttp-urlconnection-2.0.0" level="project" />
     <orderEntry type="library" exported="" name="greendao-1.3.7" level="project" />
+    <orderEntry type="library" exported="" name="baidumapapi_util_v3_7_0" level="project" />
+    <orderEntry type="library" exported="" name="baidumapapi_search_v3_7_0" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-19.1.0" level="project" />
+    <orderEntry type="library" exported="" name="baidumapapi_map_v3_7_0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-19.1.0" level="project" />
     <orderEntry type="library" exported="" name="eventbus-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="okio-1.0.0" level="project" />
+    <orderEntry type="library" exported="" name="baidumapapi_radar_v3_7_0" level="project" />
+    <orderEntry type="library" exported="" name="xUtils-2.6.7" level="project" />
     <orderEntry type="library" exported="" name="commons-io-2.4" level="project" />
     <orderEntry type="library" exported="" name="android-async-http-1.4.6" level="project" />
+    <orderEntry type="library" exported="" name="locSDK_6.13" level="project" />
     <orderEntry type="library" exported="" name="gson-2.3.1" level="project" />
     <orderEntry type="library" exported="" name="protobuf-java-2.6.1" level="project" />
+    <orderEntry type="library" exported="" name="baidumapapi_cloud_v3_7_0" level="project" />
     <orderEntry type="library" exported="" name="netty-3.6.6.Final" level="project" />
+    <orderEntry type="library" exported="" name="baidumapapi_base_v3_7_0" level="project" />
     <orderEntry type="library" exported="" name="fastjson-1.2.6" level="project" />
+    <orderEntry type="library" exported="" name="Yuntx_FullLib_v5.2.0r2" level="project" />
     <orderEntry type="library" exported="" name="okhttp-2.0.0" level="project" />
     <orderEntry type="library" exported="" name="universal-image-loader-1.9.3" level="project" />
     <orderEntry type="module" module-name="mgimlibs" exported="" />

@@ -96,7 +96,7 @@ public class IMSessionManager extends IMManager {
     public void onLocalNetOk(){
         int latestUpdateTime = dbInterface.getSessionLastTime();
         logger.d("session#更新时间:%d",latestUpdateTime);
-//        reqGetRecentContacts(latestUpdateTime);
+        reqGetRecentContacts(latestUpdateTime);
     }
 
     /**----------------------------分割线--------------------------------*/

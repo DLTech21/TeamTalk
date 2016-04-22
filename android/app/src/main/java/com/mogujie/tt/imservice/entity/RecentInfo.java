@@ -56,6 +56,18 @@ public class RecentInfo {
             avatarList.add(entity.getAvatar());
             avatar = avatarList;
         }
+        switch (latestMsgType) {
+            case DBConstant.MSG_TYPE_GROUP_LOCATION:
+            case DBConstant.MSG_TYPE_SINGLE_LOCATION:
+                latestMsgData = DBConstant.DISPLAY_FOR_LOCATION;
+                break;
+            case DBConstant.MSG_TYPE_GROUP_FILE:
+            case DBConstant.MSG_TYPE_SINGLE_FILE:
+                latestMsgData = DBConstant.DISPLAY_FOR_FILE;
+                break;
+            default:
+                break;
+        }
     }
 
 
@@ -95,7 +107,18 @@ public class RecentInfo {
             }
             avatar = avatarList;
         }
-        //avatar
+        switch (latestMsgType) {
+            case DBConstant.MSG_TYPE_GROUP_LOCATION:
+            case DBConstant.MSG_TYPE_SINGLE_LOCATION:
+                latestMsgData = DBConstant.DISPLAY_FOR_LOCATION;
+                break;
+            case DBConstant.MSG_TYPE_GROUP_FILE:
+            case DBConstant.MSG_TYPE_SINGLE_FILE:
+                latestMsgData = DBConstant.DISPLAY_FOR_FILE;
+                break;
+            default:
+                break;
+        }
     }
 
     public String getSessionKey() {

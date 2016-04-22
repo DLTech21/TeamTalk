@@ -40,11 +40,14 @@ public interface SysConstant {
     public static final int CAMERA_WITH_DATA = 3023;
 
 
+    public static final int LOCATION_BACK_DATA = 6;
+
     /**
      *1. 配置的全局key
      * */
     public static final String SETTING_GLOBAL = "Global";
     public static final String UPLOAD_IMAGE_INTENT_PARAMS = "com.mogujie.tt.upload.image.intent";
+    public static final String UPLOAD_FILE_INTENT_PARAMS = "com.mogujie.tt.upload.file.intent";
     /**
      * event 优先级
      * */

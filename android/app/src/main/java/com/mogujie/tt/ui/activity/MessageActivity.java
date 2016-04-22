@@ -4,6 +4,7 @@ package com.mogujie.tt.ui.activity;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
@@ -24,6 +25,7 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.text.Editable;
 import android.text.Selection;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -63,7 +65,9 @@ import com.mogujie.tt.config.IntentConstant;
 import com.mogujie.tt.config.SysConstant;
 import com.mogujie.tt.imservice.entity.AudioMessage;
 import com.mogujie.tt.imservice.entity.EmotionMessage;
+import com.mogujie.tt.imservice.entity.FileMessage;
 import com.mogujie.tt.imservice.entity.ImageMessage;
+import com.mogujie.tt.imservice.entity.LocationMessage;
 import com.mogujie.tt.imservice.entity.TextMessage;
 import com.mogujie.tt.imservice.entity.UnreadEntity;
 import com.mogujie.tt.imservice.event.MessageEvent;
@@ -81,16 +85,23 @@ import com.mogujie.tt.ui.base.TTBaseActivity;
 import com.mogujie.tt.ui.helper.AudioPlayerHandler;
 import com.mogujie.tt.ui.helper.AudioRecordHandler;
 import com.mogujie.tt.ui.helper.Emoparser;
+import com.mogujie.tt.ui.plugin.FileExplorerActivity;
 import com.mogujie.tt.ui.widget.CustomEditView;
 import com.mogujie.tt.ui.widget.EmoGridView;
 import com.mogujie.tt.ui.widget.EmoGridView.OnEmoGridViewItemClick;
 import com.mogujie.tt.ui.widget.MGProgressbar;
 import com.mogujie.tt.ui.widget.YayaEmoGridView;
 import com.mogujie.tt.utils.CommonUtil;
+import com.mogujie.tt.utils.FileUtils;
 import com.mogujie.tt.utils.IMUIHelper;
 import com.mogujie.tt.utils.Logger;
+import com.mogujie.tt.utils.ViewUtils;
+import com.mogujie.tt.voip.VoIPCallHelper;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
+import com.yuntongxun.ecsdk.ECMessage;
+import com.yuntongxun.ecsdk.ECVoIPCallManager;
+import com.yuntongxun.ecsdk.im.ECFileMessageBody;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -351,8 +362,60 @@ public class MessageActivity extends TTBaseActivity
                 logger.d("pic#ALBUM_BACK_DATA");
                 setIntent(data);
                 break;
+            case SysConstant.LOCATION_BACK_DATA:
+                double latitude = data.getDoubleExtra("latitude", 0);
+                double longitude = data.getDoubleExtra("longitude", 0);
+                String locationAddress = data.getStringExtra("address");
+                if (locationAddress != null && !locationAddress.equals("")) {
+                    sendLocationMsg(latitude, longitude, locationAddress);
+                } else {
+                    Toast.makeText(this, "无法获取到您的位置信息！", Toast.LENGTH_SHORT)
+                            .show();
+                }
+                break;
+            case 0x2a:
+                handleAttachUrl(data.getStringExtra("choosed_file_path"));
+                break;
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    /**
+     * 处理附件
+     * @param path
+     */
+    private void handleAttachUrl(final String path) {
+        File file = new File(path);
+        if(!file.exists()) {
+            return ;
+        }
+        final long length = file.length();
+        if(length > (10 * 1048576.0F)) {
+            ViewUtils.showMessage("文件大小超过限制，最大不能超过10M");
+            return;
+        }
+        handleSendFileAttachMessage(length, path);
+    }
+
+    /**
+     * 处理发送附件消息
+     * @param length
+     * @param pathName
+     */
+    private void handleSendFileAttachMessage(long length, String pathName) {
+        if(TextUtils.isEmpty(pathName)) {
+            return ;
+        }
+        FileMessage fileMessage = FileMessage.buildForSend(pathName, loginUser, peerEntity);
+        pushList(fileMessage);
+        imService.getMessageManager().sendFile(fileMessage);
+    }
+
+
+    private void sendLocationMsg(double latitude, double longitude, String locationAddress) {
+        LocationMessage locationMessage = LocationMessage.buildForSend(locationAddress, latitude, longitude, loginUser, peerEntity);
+        pushList(locationMessage);
+        imService.getMessageManager().sendMessage(locationMessage);
     }
 
     private void handleImagePickData(List<ImageItem> list) {
@@ -365,7 +428,6 @@ public class MessageActivity extends TTBaseActivity
         }
         imService.getMessageManager().sendImages(listMsg);
     }
-
 
     public void onEventMainThread(SelectEvent event) {
         List<ImageItem> itemList = event.getList();
@@ -426,6 +488,20 @@ public class MessageActivity extends TTBaseActivity
             case HANDLER_IMAGE_UPLOAD_SUCCESS: {
                 ImageMessage imageMessage = (ImageMessage) event.getMessageEntity();
                 adapter.updateItemState(imageMessage);
+            }
+            break;
+
+            case HANDLER_FILE_UPLOAD_FAILD: {
+                logger.d("file#onUploadFileFaild");
+                FileMessage fileMessage = (FileMessage) event.getMessageEntity();
+                adapter.updateItemState(fileMessage);
+                showToast(R.string.message_send_failed);
+            }
+            break;
+
+            case HANDLER_FILE_UPLOAD_SUCCESS: {
+                FileMessage fileMessage = (FileMessage) event.getMessageEntity();
+                adapter.updateItemState(fileMessage);
             }
             break;
 
@@ -642,8 +718,12 @@ public class MessageActivity extends TTBaseActivity
         }
         View takePhotoBtn = findViewById(R.id.take_photo_btn);
         View takeCameraBtn = findViewById(R.id.take_camera_btn);
+        View takeLocationBtn = findViewById(R.id.take_location_btn);
+        View takeFileBtn = findViewById(R.id.take_file_btn);
         takePhotoBtn.setOnClickListener(this);
         takeCameraBtn.setOnClickListener(this);
+        takeLocationBtn.setOnClickListener(this);
+        takeFileBtn.setOnClickListener(this);
 
         //EMO_LAYOUT
         emoLayout = (LinearLayout) findViewById(R.id.emo_layout);
@@ -970,8 +1050,27 @@ public class MessageActivity extends TTBaseActivity
                 textView_new_msg_tip.setVisibility(View.GONE);
             }
             break;
+            case R.id.take_location_btn:
+            {
+
+                Intent intent = new Intent(MessageActivity.this, BaiduMapActivity.class);
+                intent.putExtra(IntentConstant.KEY_SESSION_KEY, currentSessionKey);
+                startActivityForResult(intent, SysConstant.LOCATION_BACK_DATA);
+
+                MessageActivity.this.overridePendingTransition(R.anim.tt_album_enter, R.anim.tt_stay);
+                messageEdt.clearFocus();
+                scrollToBottomListItem();
+                addOthersPanelView.setVisibility(View.GONE);
+            }
+                break;
+            case R.id.take_file_btn:
+                startActivityForResult(new Intent(this,
+                        FileExplorerActivity.class), 0x2a);
+                addOthersPanelView.setVisibility(View.GONE);
+                break;
         }
     }
+
 
     // 主要是录制语音的
     @Override

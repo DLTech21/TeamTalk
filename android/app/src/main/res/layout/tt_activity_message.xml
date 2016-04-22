@@ -275,6 +275,50 @@
                     android:textColor="@color/default_light_black_color"
                     android:textSize="13sp" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:orientation="vertical" >
+
+                <View
+                    android:id="@+id/take_location_btn"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:background="@drawable/tt_take_photo_btn_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/take_location_btn_text"
+                    android:textColor="@color/default_light_black_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:orientation="vertical" >
+
+                <View
+                    android:id="@+id/take_file_btn"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:background="@drawable/tt_take_photo_btn_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/take_file_btn_text"
+                    android:textColor="@color/default_light_black_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
 

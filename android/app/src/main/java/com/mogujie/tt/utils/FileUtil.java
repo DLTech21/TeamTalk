@@ -498,4 +498,18 @@ public class FileUtil
         }
         return filename;
     }
+
+    /**
+     * 返回文件名
+     *
+     * @param pathName
+     * @return
+     */
+    public static String getFilename(String pathName) {
+        File file = new File(pathName);
+        if (!file.exists()) {
+            return "";
+        }
+        return file.getName();
+    }
 }

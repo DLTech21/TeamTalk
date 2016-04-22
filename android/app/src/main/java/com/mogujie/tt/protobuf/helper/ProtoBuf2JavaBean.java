@@ -259,6 +259,8 @@ public class ProtoBuf2JavaBean {
             case MSG_TYPE_SINGLE_IMAGE:
             case MSG_TYPE_GROUP_LOCATION:
             case MSG_TYPE_SINGLE_LOCATION:
+            case MSG_TYPE_GROUP_FILE:
+            case MSG_TYPE_SINGLE_FILE:
                 messageEntity = analyzeText(msgInfo);
                 break;
             default:

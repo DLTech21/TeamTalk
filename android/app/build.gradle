@@ -52,4 +52,6 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
     compile 'commons-io:commons-io:2.4'
     compile 'com.alibaba:fastjson:1.2.6'
+    compile files('libs/baidumapapi_base_v3_7_0.jar')
+    compile files('libs/Yuntx_FullLib_v5.2.0r2.jar')
 }

@@ -94,7 +94,7 @@ public class IMPacketDispatcher {
 
             case IMBaseDefine.MessageCmdID.CID_MSG_LIST_RESPONSE_VALUE:
                 IMMessage.IMGetMsgListRsp rsp = IMMessage.IMGetMsgListRsp.parseFrom(buffer);
-//                IMMessageManager.instance().onReqHistoryMsg(rsp);
+                IMMessageManager.instance().onReqHistoryMsg(rsp);
             return;
 
             case IMBaseDefine.MessageCmdID.CID_MSG_DATA_VALUE:

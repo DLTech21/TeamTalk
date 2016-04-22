@@ -53,6 +53,7 @@ public interface DBConstant {
     public final String DISPLAY_FOR_MIX = "[图文消息]";
     public final String DISPLAY_FOR_AUDIO = "[语音]";
     public final String DISPLAY_FOR_LOCATION = "[位置]";
+    public final String DISPLAY_FOR_FILE = "[文件]";
     public final String DISPLAY_FOR_ERROR = "[未知消息]";
 
 

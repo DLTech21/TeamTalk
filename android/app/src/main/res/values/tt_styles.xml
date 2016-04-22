@@ -109,7 +109,29 @@
         <item name="android:windowIsFloating">true</item> <!-- 是否浮在activity之上 -->
     </style>
 
+    <style name="CCPBigRedButton" parent="@style/CCPBigButton">
+        <item name="android:background">@drawable/btn_style_red</item>
+    </style>
 
+    <style name="CCPBigGreyButton" parent="@style/CCPBigButton">
+        <item name="android:textColor">@color/ec_grey_btn_text_color</item>
+        <item name="android:background">@drawable/ec_btn_style_grey</item>
+    </style>
+
+    <style name="CCPBigGreenButton" parent="@style/CCPBigButton">
+        <item name="android:background">@drawable/btn_style_green</item>
+    </style>
+
+    <style name="CCPBigButton">
+        <item name="android:textSize">18.0dip</item>
+        <item name="android:textColor">#ffd8d8d8</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">16.0dip</item>
+        <item name="android:paddingRight">16.0dip</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">48.0dip</item>
+    </style>
     <!--<style name="AppTheme" parent="android:Theme.NoTitleBar">-->
         <!--<item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>-->
     <!--</style>-->
@@ -119,6 +141,23 @@
     <!--<style name="AppTheme.Widget.TextView" parent="android:Widget.Holo.Light.TextView">-->
         <!--<item name="fontPath">fonts/lanting.ttf</item>-->
     <!--</style>-->
-    
+
+    <style name="NavPage">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/navpage</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+
+    <style name="CCPList">
+        <item name="android:scrollbars">none</item>
+        <item name="android:fadingEdge">none</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:listSelector">@color/transparent</item>
+        <item name="android:divider">@color/list_devider_color</item>
+        <item name="android:dividerHeight">0.0px</item>
+    </style>
 
 </resources>

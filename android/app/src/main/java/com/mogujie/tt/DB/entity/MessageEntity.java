@@ -192,6 +192,8 @@ public class MessageEntity implements java.io.Serializable {
                 return DBConstant.DISPLAY_FOR_MIX;
             case DBConstant.SHOW_LOCATION_TYPE:
                 return DBConstant.DISPLAY_FOR_LOCATION;
+            case DBConstant.SHOW_FIEL_TYPE:
+                return DBConstant.DISPLAY_FOR_FILE;
             default:
                 return DBConstant.DISPLAY_FOR_ERROR;
         }

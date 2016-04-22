@@ -17,13 +17,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.mogujie.tt.config.DBConstant;
 import com.mogujie.tt.DB.entity.MessageEntity;
 import com.mogujie.tt.DB.entity.UserEntity;
 import com.mogujie.tt.R;
 import com.mogujie.tt.config.MessageConstant;
 import com.mogujie.tt.imservice.entity.EmotionMessage;
+import com.mogujie.tt.imservice.entity.FileMessage;
+import com.mogujie.tt.imservice.entity.LocationEntity;
 import com.mogujie.tt.imservice.entity.LocationMessage;
+import com.mogujie.tt.ui.activity.LocationCheckActivity;
 import com.mogujie.tt.ui.helper.AudioPlayerHandler;
 import com.mogujie.tt.config.IntentConstant;
 import com.mogujie.tt.imservice.entity.AudioMessage;
@@ -36,6 +40,7 @@ import com.mogujie.tt.ui.activity.PreviewMessageImagesActivity;
 import com.mogujie.tt.ui.activity.PreviewTextActivity;
 import com.mogujie.tt.ui.helper.Emoparser;
 import com.mogujie.tt.ui.widget.GifView;
+import com.mogujie.tt.ui.widget.message.FileRenderView;
 import com.mogujie.tt.ui.widget.message.GifImageRenderView;
 import com.mogujie.tt.ui.widget.message.LocationRenderView;
 import com.mogujie.tt.utils.CommonUtil;
@@ -299,6 +304,10 @@ public class MessageAdapter extends BaseAdapter {
                 MessageEntity info = (MessageEntity) obj;
                 boolean isMine = info.getFromId() == loginUser.getPeerId();
                 switch (info.getDisplayType()) {
+                    case DBConstant.SHOW_FIEL_TYPE:
+                        type = isMine ? RenderType.MESSAGE_TYPE_MINE_FILE
+                                : RenderType.MESSAGE_TYPE_OTHER_FILE;
+                        break;
                     case DBConstant.SHOW_LOCATION_TYPE:
                         type = isMine ? RenderType.MESSAGE_TYPE_MINE_LOCATION
                                 : RenderType.MESSAGE_TYPE_OTHER_LOCATION;
@@ -742,16 +751,82 @@ public class MessageAdapter extends BaseAdapter {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-//                final String content = locationMessage.getContent();
-//                Intent intent = new Intent(ctx, PreviewGifActivity.class);
-//                intent.putExtra(IntentConstant.PREVIEW_TEXT_CONTENT, content);
-//                ctx.startActivity(intent);
-//                ((Activity) ctx).overridePendingTransition(R.anim.tt_image_enter, R.anim.tt_stay);
+                String content = locationMessage.getContent();
+                LocationEntity locationEntity = new Gson().fromJson(content, LocationEntity.class);
+                Intent intent = new Intent(ctx, LocationCheckActivity.class);
+                intent.putExtra("latitude", Double.valueOf(locationEntity.getLat()));
+                intent.putExtra("longitude", Double.valueOf(locationEntity.getLng()));
+                intent.putExtra("address", locationEntity.getAddress());
+                ctx.startActivity(intent);
+                ((Activity) ctx).overridePendingTransition(R.anim.tt_image_enter, R.anim.tt_stay);
             }
         });
 
         locationRenderView.render(locationMessage, userEntity, ctx);
         return locationRenderView;
+    }
+
+    /**
+     * file类型的: 1. 设定内容file
+     * 2. 点击事件  单击跳转、 双击方法、长按pop menu
+     * 点击头像的事件 跳转
+     *
+     * @param position
+     * @param convertView
+     * @param viewGroup
+     * @param isMine
+     * @return
+     */
+    private View fileMsgRender(final int position, View convertView, final ViewGroup viewGroup, final boolean isMine) {
+        FileRenderView fileRenderView;
+        final FileMessage fileMessage = (FileMessage) msgObjectList.get(position);
+        UserEntity userEntity = imService.getContactManager().findContact(fileMessage.getFromId());
+
+        if (null == convertView) {
+            fileRenderView = FileRenderView.inflater(ctx, viewGroup, isMine); //new TextRenderView(ctx,viewGroup,isMine);
+        } else {
+            fileRenderView = (FileRenderView) convertView;
+        }
+
+        final TextView textView = fileRenderView.getMessageContent();
+
+        // 失败事件添加
+        fileRenderView.getMessageFailed().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                MessageOperatePopup popup = getPopMenu(viewGroup, new OperateItemClickListener(fileMessage, position));
+                popup.show(textView, DBConstant.SHOW_FIEL_TYPE, true, isMine);
+            }
+        });
+
+        textView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                // 弹窗类型
+                MessageOperatePopup popup = getPopMenu(viewGroup, new OperateItemClickListener(fileMessage, position));
+                boolean bResend = fileMessage.getStatus() == MessageConstant.MSG_FAILURE;
+                popup.show(textView, DBConstant.SHOW_FIEL_TYPE, bResend, isMine);
+                return true;
+            }
+        });
+
+        // url 路径可以设定 跳转哦哦
+        final String content = fileMessage.getContent();
+        textView.setOnTouchListener(new OnDoubleClickListener() {
+            @Override
+            public void onClick(View view) {
+                //todo
+            }
+
+            @Override
+            public void onDoubleClick(View view) {
+                Intent intent = new Intent(ctx, PreviewTextActivity.class);
+                intent.putExtra(IntentConstant.PREVIEW_TEXT_CONTENT, content);
+                ctx.startActivity(intent);
+            }
+        });
+        fileRenderView.render(fileMessage, userEntity, ctx);
+        return fileRenderView;
     }
 
     @Override
@@ -807,6 +882,12 @@ public class MessageAdapter extends BaseAdapter {
                     break;
                 case MESSAGE_TYPE_OTHER_LOCATION:
                     convertView = locationMsgRender(position, convertView, parent, false);
+                    break;
+                case MESSAGE_TYPE_MINE_FILE:
+                    convertView = fileMsgRender(position, convertView, parent, true);
+                    break;
+                case MESSAGE_TYPE_OTHER_FILE:
+                    convertView = fileMsgRender(position, convertView, parent, false);
                     break;
             }
             return convertView;

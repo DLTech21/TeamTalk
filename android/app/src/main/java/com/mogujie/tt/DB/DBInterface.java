@@ -20,6 +20,7 @@ import com.mogujie.tt.config.DBConstant;
 import com.mogujie.tt.config.MessageConstant;
 import com.mogujie.tt.imservice.entity.AudioMessage;
 import com.mogujie.tt.imservice.entity.EmotionMessage;
+import com.mogujie.tt.imservice.entity.FileMessage;
 import com.mogujie.tt.imservice.entity.ImageMessage;
 import com.mogujie.tt.imservice.entity.LocationMessage;
 import com.mogujie.tt.imservice.entity.MixMessage;
@@ -460,6 +461,9 @@ public class DBInterface {
                 case DBConstant.SHOW_LOCATION_TYPE:
                     messageEntity = LocationMessage.parseFromDB(msg);
                     break;
+                case DBConstant.SHOW_FIEL_TYPE:
+                    messageEntity = FileMessage.parseFromDB(msg);
+                    break;
             }
         return messageEntity;
     }
@@ -494,6 +498,9 @@ public class DBInterface {
                     break;
                 case DBConstant.SHOW_GIF_TYPE:
                     newList.add(EmotionMessage.parseFromDB(info));
+                    break;
+                case DBConstant.SHOW_FIEL_TYPE:
+                    newList.add(FileMessage.parseFromDB(info));
                     break;
             }
         }

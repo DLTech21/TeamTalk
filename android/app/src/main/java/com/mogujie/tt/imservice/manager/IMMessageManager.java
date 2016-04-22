@@ -3,6 +3,7 @@ package com.mogujie.tt.imservice.manager;
 import android.content.Intent;
 import android.text.TextUtils;
 
+import com.google.gson.Gson;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.CodedInputStream;
 import com.mogujie.tt.DB.entity.PeerEntity;
@@ -15,11 +16,14 @@ import com.mogujie.tt.config.SysConstant;
 import com.mogujie.tt.imservice.callback.Packetlistener;
 import com.mogujie.tt.imservice.entity.AudioMessage;
 import com.mogujie.tt.imservice.entity.EmotionMessage;
+import com.mogujie.tt.imservice.entity.FileEntity;
+import com.mogujie.tt.imservice.entity.FileMessage;
 import com.mogujie.tt.imservice.entity.ImageMessage;
 import com.mogujie.tt.imservice.entity.TextMessage;
 import com.mogujie.tt.imservice.event.MessageEvent;
 import com.mogujie.tt.imservice.event.PriorityEvent;
 import com.mogujie.tt.imservice.event.RefreshHistoryMsgEvent;
+import com.mogujie.tt.imservice.service.LoadFileService;
 import com.mogujie.tt.imservice.service.LoadImageService;
 import com.mogujie.tt.protobuf.helper.EntityChangeEngine;
 import com.mogujie.tt.protobuf.helper.Java2ProtoBuf;
@@ -128,6 +132,23 @@ public class IMMessageManager extends IMManager{
 
             case IMAGE_UPLOAD_SUCCESS:{
                 onImageLoadSuccess(event);
+            }break;
+
+            case FILE_UPLOAD_FAILD: {
+                logger.d("flie#onUploadFlieFaild");
+                FileMessage fileMessage = (FileMessage)event.getMessageEntity();
+                fileMessage.setLoadStatus(MessageConstant.IMAGE_LOADED_FAILURE);
+                fileMessage.setStatus(MessageConstant.MSG_FAILURE);
+                dbInterface.insertOrUpdateMessage(fileMessage);
+
+                /**通知Activity层 失败*/
+                event.setEvent(MessageEvent.Event.HANDLER_FILE_UPLOAD_FAILD);
+                event.setMessageEntity(fileMessage);
+                triggerEvent(event);
+            }break;
+
+            case FILE_UPLOAD_SUCCESS:{
+                onFileLoadSuccess(event);
             }break;
         }
     }
@@ -279,6 +300,27 @@ public class IMMessageManager extends IMManager{
 		sendMessage(audioMessage);
 	}
 
+    public void sendFile(FileMessage fileMessage) {
+        fileMessage.setStatus(MessageConstant.MSG_SENDING);
+        DBInterface.instance().insertOrUpdateMessage(fileMessage);
+        int loadStatus = fileMessage.getLoadStatus();
+        switch (loadStatus){
+            case MessageConstant.IMAGE_LOADED_FAILURE:
+            case MessageConstant.IMAGE_UNLOAD:
+            case MessageConstant.IMAGE_LOADING:
+                fileMessage.setLoadStatus(MessageConstant.IMAGE_LOADING);
+                Intent loadImageIntent = new Intent(ctx, LoadFileService.class);
+                loadImageIntent.putExtra(SysConstant.UPLOAD_FILE_INTENT_PARAMS, fileMessage);
+                ctx.startService(loadImageIntent);
+                break;
+            case MessageConstant.IMAGE_LOADED_SUCCESS:
+                sendMessage(fileMessage);
+                break;
+            default:
+                throw new RuntimeException("sendImages#status不可能出现的状态");
+        }
+        sessionManager.updateSession(fileMessage);
+    }
 
     public void sendSingleImage(ImageMessage msg){
         logger.d("ImMessageManager#sendImage ");
@@ -292,7 +334,7 @@ public class IMMessageManager extends IMManager{
      * @param msgList
      */
     public void sendImages(List<ImageMessage> msgList) {
-        logger.i("chat#image#sendImages size:%d",msgList.size());
+        logger.i("chat#image#sendImages size:%d", msgList.size());
         if(null == msgList || msgList.size() <=0){
             return ;
         }
@@ -326,7 +368,7 @@ public class IMMessageManager extends IMManager{
             }
 		}
         /**将最后一条更新到Session上面*/
-        sessionManager.updateSession(msgList.get(len-1));
+        sessionManager.updateSession(msgList.get(len - 1));
 	}
 
     /**
@@ -440,7 +482,7 @@ public class IMMessageManager extends IMManager{
             count = lastMsgId;
         }
         // 降序结果输出desc
-        List<MessageEntity> listMsg = dbInterface.getHistoryMsg(sessionKey,lastMsgId,lastCreateTime,count);
+        List<MessageEntity> listMsg = dbInterface.getHistoryMsg(sessionKey, lastMsgId, lastCreateTime, count);
         // asyn task refresh
         int resSize = listMsg.size();
         logger.d("LoadHistoryMsg return size is %d",resSize);
@@ -495,9 +537,9 @@ public class IMMessageManager extends IMManager{
         boolean localFailure =  SequenceNumberMaker.getInstance().isFailure(lastSuccessMsgId);
         if(localFailure){
             logger.e("LoadHistoryMsg# all msg is failure!");
-//            if(hisEvent.pullTimes ==1){
-//                reqHistoryMsgNet(peerId,peerType,lastSuccessMsgId,refreshCnt);
-//            }
+            if(hisEvent.pullTimes ==1){
+                reqHistoryMsgNet(peerId,peerType,lastSuccessMsgId,refreshCnt);
+            }
         }else {
             /**正常*/
             refreshDBMsg(peerId, peerType, sessionKey, lastSuccessMsgId, refreshCnt);
@@ -528,7 +570,7 @@ public class IMMessageManager extends IMManager{
         }
         // 请求缺失的消息
         if(needReqList.size()>0){
-            reqMsgById(peerId,peedType,needReqList);
+            reqMsgById(peerId, peedType, needReqList);
         }
     }
 
@@ -593,21 +635,21 @@ public class IMMessageManager extends IMManager{
     /**
      * network 请求历史消息
      */
-//    public  void reqHistoryMsgNet(int peerId,int peerType, int lastMsgId, int cnt){
-//        int loginId = IMLoginManager.instance().getLoginId();
-//
-//        IMMessage.IMGetMsgListReq req = IMMessage.IMGetMsgListReq.newBuilder()
-//                .setUserId(loginId)
-//                .setSessionType(Java2ProtoBuf.getProtoSessionType(peerType))
-//                .setSessionId(peerId)
-//                .setMsgIdBegin(lastMsgId)
-//                .setMsgCnt(cnt)
-//                .build();
-//
-//        int sid = IMBaseDefine.ServiceID.SID_MSG_VALUE;
-//        int cid = IMBaseDefine.MessageCmdID.CID_MSG_LIST_REQUEST_VALUE;
-//        imSocketManager.sendRequest(req,sid,cid);
-//    }
+    public  void reqHistoryMsgNet(int peerId,int peerType, int lastMsgId, int cnt){
+        int loginId = IMLoginManager.instance().getLoginId();
+
+        IMMessage.IMGetMsgListReq req = IMMessage.IMGetMsgListReq.newBuilder()
+                .setUserId(loginId)
+                .setSessionType(Java2ProtoBuf.getProtoSessionType(peerType))
+                .setSessionId(peerId)
+                .setMsgIdBegin(lastMsgId)
+                .setMsgCnt(cnt)
+                .build();
+
+        int sid = IMBaseDefine.ServiceID.SID_MSG_VALUE;
+        int cid = IMBaseDefine.MessageCmdID.CID_MSG_LIST_REQUEST_VALUE;
+        imSocketManager.sendRequest(req, sid, cid);
+    }
 
     /**
      * 收到消息的具体信息
@@ -687,6 +729,40 @@ public class IMMessageManager extends IMManager{
         imageMessage.setContent(MessageConstant.IMAGE_MSG_START
                 + realImageURL + MessageConstant.IMAGE_MSG_END);
         sendMessage(imageMessage);
+    }
+
+    private void onFileLoadSuccess(MessageEvent imageEvent){
+
+        FileMessage fileMessage = (FileMessage)imageEvent.getMessageEntity();
+        logger.d("file#onFileUploadFinish");
+        String imageUrl = fileMessage.getUrl();
+        logger.d("file#fileUrl:%s", imageUrl);
+        String realImageURL = "";
+        try {
+            realImageURL = URLDecoder.decode(imageUrl, "utf-8");
+            logger.d("file#realFileUrl:%s", realImageURL);
+        } catch (UnsupportedEncodingException e) {
+            logger.e(e.toString());
+        }
+
+        fileMessage.setUrl(realImageURL);
+        fileMessage.setStatus(MessageConstant.MSG_SUCCESS);
+        fileMessage.setLoadStatus(MessageConstant.IMAGE_LOADED_SUCCESS);
+        dbInterface.insertOrUpdateMessage(fileMessage);
+
+        /**通知Activity层 成功 ， 事件通知*/
+        imageEvent.setEvent(MessageEvent.Event.HANDLER_FILE_UPLOAD_SUCCESS);
+        imageEvent.setMessageEntity(fileMessage);
+        triggerEvent(imageEvent);
+
+        FileEntity fileEntity = new FileEntity();
+        fileEntity.setFileName(fileMessage.getFileName());
+        fileEntity.setExt(fileMessage.getExt());
+        fileEntity.setLoadStatus(fileMessage.getLoadStatus());
+        fileEntity.setUrl(fileMessage.getUrl());
+        fileEntity.setPath(fileMessage.getPath());
+        fileMessage.setContent(new Gson().toJson(fileEntity));
+        sendMessage(fileMessage);
     }
 
 //    /**获取session内的最后一条回话*/

@@ -57,4 +57,33 @@
     <color name="user_detail_base">#ececec</color>
     <color name="pickimage_item_bg">#ffffff</color>
 
+    <color name="ec_voip_interface_text_color">#bababa</color>
+    <color name="ec_voip_talk_bg_color">#ff404040</color>
+
+    <color name="green_btn_color_pressed">#ff298409</color>
+    <color name="ccp_green_alpha">#7f00B486</color>
+    <item name="green_btn_color_disable" type="color">@color/ccp_green_alpha</item>
+
+    <color name="red_btn_color_normal">#ffff5454</color>
+    <color name="red_btn_color_pressed">#ffd24242</color>
+    <color name="red_btn_color_disable">#7fff5454</color>
+
+    <color name="ec_grey_btn_color_normal">#fff1f1f1</color>
+    <color name="ec_grey_btn_color_pressed">#ffd8d8d8</color>white_color_selector
+    <color name="ec_grey_btn_color_disable">#7fd8d8d8</color>
+
+    <color name="ec_grey_btn_stroke_color_normal">#ffbebebe</color>
+    <color name="ec_grey_btn_stroke_color_pressed">#ff9e9e9e</color>
+    <color name="ec_grey_btn_stroke_color_disable">#7f9e9e9e</color>
+
+    <color name="ec_normal_text_color_disable">#7f353535</color>
+    <color name="normal_text_color_disable">#7f353535</color>
+    <color name="normal_text_color">#ff353535</color>
+
+    <color name="navpage">#ffffffff</color>
+
+    <color name="action_bar_tittle_color">#ffcfcfcf</color>
+
+    <color name="list_devider_color">#fff2f2f2</color>
+
 </resources>

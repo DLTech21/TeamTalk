@@ -296,7 +296,9 @@
     <color name="abc_search_url_text_selected">@android:color/black</color>
     <!-- From: file:/Users/Donal/Documents/develop/tt-android/app/src/main/res/values/tt_color.xml -->
     <eat-comment/>
+    <color name="action_bar_tittle_color">#ffcfcfcf</color>
     <color name="album_list_item_count_color">#bcbcbc</color>
+    <color name="ccp_green_alpha">#7f00B486</color>
     <color name="contact_category_text_color">#858585</color>
     <color name="contact_category_title_bk">#f1f0f6</color>
     <color name="contact_default_bk">#dedee0</color>
@@ -316,11 +318,23 @@
     <color name="default_line_color">#cccccc</color>
     <color name="default_title_color">#343434</color>
     <color name="default_value_color">#333333</color>
+    <color name="ec_grey_btn_color_disable">#7fd8d8d8</color>
+    <color name="ec_grey_btn_color_normal">#fff1f1f1</color>
+    <color name="ec_grey_btn_color_pressed">#ffd8d8d8</color>
+    <color name="ec_grey_btn_stroke_color_disable">#7f9e9e9e</color>
+    <color name="ec_grey_btn_stroke_color_normal">#ffbebebe</color>
+    <color name="ec_grey_btn_stroke_color_pressed">#ff9e9e9e</color>
+    <color name="ec_normal_text_color_disable">#7f353535</color>
+    <color name="ec_voip_interface_text_color">#bababa</color>
+    <color name="ec_voip_talk_bg_color">#ff404040</color>
     <color name="emo_bk_color">#ffffffff</color>
+    <item name="green_btn_color_disable" type="color">@color/ccp_green_alpha</item>
+    <color name="green_btn_color_pressed">#ff298409</color>
     <color name="group_manager_group_title">#010101</color>
     <color name="group_manager_user_title">#666666</color>
     <color name="half_transparent_dark">#e0000000</color>
     <color name="half_transparent_light">#AA000000</color>
+    <color name="list_devider_color">#fff2f2f2</color>
     <color name="list_divider_color">#d1d1d1</color>
     <color name="list_item_sel_color">#eaeaea</color>
     <color name="listview_color">#F0F0F0</color>
@@ -592,8 +606,14 @@
     <color name="message_time_color">#a0a0a0</color>
     <color name="messgae_uname_color">#ffee4566</color>
     <color name="messgae_uname_dark_color">#000000</color>
+    <color name="navpage">#ffffffff</color>
+    <color name="normal_text_color">#ff353535</color>
+    <color name="normal_text_color_disable">#7f353535</color>
     <color name="panel_bk_color">#fffafafa</color>
     <color name="pickimage_item_bg">#ffffff</color>
+    <color name="red_btn_color_disable">#7fff5454</color>
+    <color name="red_btn_color_normal">#ffff5454</color>
+    <color name="red_btn_color_pressed">#ffd24242</color>
     <color name="transparent">#00000000</color>
     <color name="txt_hint_color">#999999</color>
     <color name="user_detail_base">#ececec</color>
@@ -620,6 +640,15 @@
     <declare-styleable name="Spinner"><attr format="reference" name="prompt"/><attr format="enum" name="spinnerMode"><enum name="dialog" value="0"/><enum name="dropdown" value="1"/></attr><attr name="android:dropDownSelector"/><attr name="android:popupBackground"/><attr name="android:dropDownVerticalOffset"/><attr name="android:dropDownHorizontalOffset"/><attr name="android:dropDownWidth"/><attr format="reference" name="popupPromptView"/><attr name="android:gravity"/><attr format="boolean" name="disableChildrenWhenDisabled"/></declare-styleable>
     <declare-styleable name="Theme"><attr format="reference" name="actionDropDownStyle"/><attr format="dimension" name="dropdownListPreferredItemHeight"/><attr format="reference" name="popupMenuStyle"/><attr format="dimension" name="panelMenuListWidth"/><attr format="reference" name="panelMenuListTheme"/><attr format="reference" name="listChoiceBackgroundIndicator"/></declare-styleable>
     <declare-styleable name="View"><attr format="dimension" name="paddingStart"/><attr format="dimension" name="paddingEnd"/><attr name="android:focusable"/></declare-styleable>
+    <declare-styleable name="call_control"><attr name="call_direct"><enum name="incoming" value="0"/><enum name="outgoing" value="1"/><enum name="inCall" value="2"/></attr></declare-styleable>
+    <!-- From: file:/Users/Donal/Documents/develop/tt-android/app/src/main/res/values/tt_dimens.xml -->
+    <eat-comment/>
+    <dimen name="ButtonCornerSize">2.0dip</dimen>
+    <dimen name="LargePadding">16.0dip</dimen>
+    <dimen name="MediumListHeight">56.0dip</dimen>
+    <dimen name="NormalTextSize">16.0dip</dimen>
+    <dimen name="SmallListHeight">48.0dip</dimen>
+    <dimen name="SmallestPadding">2.0dip</dimen>
     <!-- From: file:/Users/Donal/Documents/develop/tt-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml -->
     <eat-comment/>
     <dimen name="abc_action_bar_default_height">48dip</dimen>
@@ -733,6 +762,10 @@
     <!-- From: file:/Users/Donal/Documents/develop/tt-android/app/build/intermediates/exploded-aar/tt-android/mgimlibs/unspecified/res/values/values.xml -->
     <eat-comment/>
     <string name="call_phone">拨打电话</string>
+    <!-- From: file:/Users/Donal/Documents/develop/tt-android/app/src/main/res/values/tt_voip_strings.xml -->
+    <eat-comment/>
+    <string name="camera_switch_back">切换至后置摄像头</string>
+    <string name="camera_switch_front">切换至前置摄像头</string>
     <!-- From: file:/Users/Donal/Documents/develop/tt-android/app/src/main/res/values/tt_strings.xml -->
     <eat-comment/>
     <string name="cancel">取消</string>
@@ -810,6 +843,57 @@
     <!-- From: file:/Users/Donal/Documents/develop/tt-android/app/build/intermediates/exploded-aar/tt-android/mgimlibs/unspecified/res/values/values.xml -->
     <eat-comment/>
     <string name="downloading">正在下载更新</string>
+    <!-- From: file:/Users/Donal/Documents/develop/tt-android/app/src/main/res/values/tt_voip_strings.xml -->
+    <eat-comment/>
+    <string name="ec_app_err_disconnect_server_tip">无法连接服务器，请稍后再试</string>
+    <string name="ec_call_number_error">呼叫的号码错误</string>
+    <string name="ec_meeting_not_exist">会议号已解散或不存在</string>
+    <string name="ec_meeting_pass_error">会议号密码验证失败</string>
+    <string name="ec_no_support_voip">呼叫失败或者对方不在线！</string>
+    <string name="ec_regsetinfo_name">昵称</string>
+    <string formatted="false" name="ec_str_call_status">延迟时间%d（毫秒）丢包率:%d</string>
+    <string name="ec_talk_codec_select">选择通话编码</string>
+    <string name="ec_talk_mode_select">选择呼叫方式</string>
+    <string name="ec_voip_accept_call">接听</string>
+    <string name="ec_voip_audioaccpet">切到语音接听</string>
+    <string name="ec_voip_call_auth_failed">第三方鉴权失败，子账号余额不足</string>
+    <string name="ec_voip_call_back_connect">正在呼叫，请稍后…</string>
+    <string name="ec_voip_call_back_success">回拨呼叫成功，请注意接听系统来电!</string>
+    <string name="ec_voip_call_connect">正在呼叫对方，请稍后…</string>
+    <string name="ec_voip_call_connecting_server">正在连接服务器…</string>
+    <string name="ec_voip_call_error">媒体协商失败</string>
+    <string name="ec_voip_call_fail">呼叫失败，请稍后重试…</string>
+    <string name="ec_voip_call_fail_connection_failed_auth">第三方鉴权地址连接失败</string>
+    <string name="ec_voip_call_fail_no_cash">呼叫失败，请查询余额</string>
+    <string name="ec_voip_call_fail_no_pay_account">第三方主账号余额不足</string>
+    <string name="ec_voip_call_fail_not_find_appid">第三方应用ID未找到</string>
+    <string name="ec_voip_call_fail_not_online_only_call">第三方未上线应用仅限呼叫已配置测试号码</string>
+    <string name="ec_voip_calling_accepting">正在接听...</string>
+    <string name="ec_voip_calling_busy">对方正忙，请稍后再拨</string>
+    <string name="ec_voip_calling_finish">通话结束</string>
+    <string name="ec_voip_calling_network_instability">对方不在线或者网络不给力,请直呼</string>
+    <string name="ec_voip_calling_no_answer">无人应答，请稍后再拨</string>
+    <string name="ec_voip_calling_notfound">对方不在线，请稍后重试</string>
+    <string name="ec_voip_calling_refuse">对方拒绝您的呼叫请求</string>
+    <string name="ec_voip_calling_timeout">呼叫超时，请稍后再拨</string>
+    <string name="ec_voip_calling_wait">等待对方接听…</string>
+    <string name="ec_voip_disconnect_tip">网络异常，通话结束</string>
+    <string name="ec_voip_hungup">挂断</string>
+    <string name="ec_voip_invite_waiting_tip">正在等待对方接受邀请…</string>
+    <string name="ec_voip_invited_audio_tip">邀请你进行语音通话…</string>
+    <string name="ec_voip_invited_video_tip">邀请你进行视频聊天…</string>
+    <string name="ec_voip_is_talking_tip">正在通话中, 轻击以继续</string>
+    <string name="ec_voip_mute_on">静音</string>
+    <string name="ec_voip_no_resp">对方无响应</string>
+    <string name="ec_voip_outcalling">正在呼叫中…</string>
+    <string name="ec_voip_reject_btn">拒绝</string>
+    <string name="ec_voip_shutdown_tip">对方已挂断，通话结束</string>
+    <string name="ec_voip_speaker_on">免提</string>
+    <string name="ec_voip_switchto_audio">切到语音通话</string>
+    <string name="ec_voip_unknown_user">未知联系人</string>
+    <string name="ec_voip_waitting">连接中…</string>
+    <!-- From: file:/Users/Donal/Documents/develop/tt-android/app/build/intermediates/exploded-aar/tt-android/mgimlibs/unspecified/res/values/values.xml -->
+    <eat-comment/>
     <string name="empty_phone_no">号码为空</string>
     <string name="empty_prompt">名字不能为空</string>
     <string name="error_code_name">错误代码</string>
@@ -987,6 +1071,8 @@
     <string name="pick_photo_description">pick photo</string>
     <!-- From: file:/Users/Donal/Documents/develop/tt-android/app/src/main/res/values/tt_strings.xml -->
     <eat-comment/>
+    <string name="plugin_file_explorer_root_tag">设备</string>
+    <string name="plugin_file_explorer_sdcard_tag">存储卡</string>
     <string name="preview">预览</string>
     <!-- From: file:/Users/Donal/Documents/develop/tt-android/app/src/main/res/values/tt_strings_activity_login.xml -->
     <eat-comment/>
@@ -1074,13 +1160,24 @@
     <!-- From: file:/Users/Donal/Documents/develop/tt-android/app/build/intermediates/exploded-aar/tt-android/mgimlibs/unspecified/res/values/values.xml -->
     <eat-comment/>
     <string name="start_session">开始聊天</string>
+    <!-- From: file:/Users/Donal/Documents/develop/tt-android/app/src/main/res/values/tt_voip_strings.xml -->
+    <eat-comment/>
+    <string formatted="false" name="str_call_status">延迟时间%d（毫秒）丢包率:%d</string>
+    <string name="str_tips_wait_invited">正在等待对方接受邀请…</string>
+    <string formatted="false" name="str_video_bottom_time">与%1$s视频通话中\t</string>
+    <string name="str_video_btn_call_end">结束</string>
+    <string name="str_video_call_begin">开始视频通话</string>
+    <string name="str_video_call_stop">结束视频通话</string>
     <!-- From: file:/Users/Donal/Documents/develop/tt-android/app/src/main/res/values/tt_strings.xml -->
     <eat-comment/>
     <string name="switch_login_server">切换登陆服务器</string>
     <string name="switch_login_server_title">输入登陆服务器地址</string>
     <!-- From: file:/Users/Donal/Documents/develop/tt-android/app/src/main/res/values/tt_strings_activity_message.xml -->
     <eat-comment/>
+    <string name="take_call_btn_text">语音聊天</string>
     <string name="take_camera_btn_text">拍照</string>
+    <string name="take_file_btn_text">文件</string>
+    <string name="take_location_btn_text">位置</string>
     <string name="take_photo_btn_text">照片</string>
     <string name="take_photo_description">take photo</string>
     <!-- From: file:/Users/Donal/Documents/develop/tt-android/app/src/main/res/values/tt_strings.xml -->
@@ -1107,6 +1204,9 @@
     <eat-comment/>
     <string name="unavailable_image_file">该文件已损坏</string>
     <string name="unavailable_server">服务器开小差，请稍后重试～</string>
+    <!-- From: file:/Users/Donal/Documents/develop/tt-android/app/src/main/res/values/tt_voip_strings.xml -->
+    <eat-comment/>
+    <string name="vedio_switch">音视频切换</string>
     <!-- From: file:/Users/Donal/Documents/develop/tt-android/app/build/intermediates/exploded-aar/tt-android/mgimlibs/unspecified/res/values/values.xml -->
     <eat-comment/>
     <string name="wait_moment">请稍候</string>
@@ -1140,6 +1240,35 @@
             backward-compatibility can go here.
         -->
     </style>
+    <style name="CCPBigButton">
+        <item name="android:textSize">18.0dip</item>
+        <item name="android:textColor">#ffd8d8d8</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">16.0dip</item>
+        <item name="android:paddingRight">16.0dip</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">48.0dip</item>
+    </style>
+    <style name="CCPBigGreenButton" parent="@style/CCPBigButton">
+        <item name="android:background">@drawable/btn_style_green</item>
+    </style>
+    <style name="CCPBigGreyButton" parent="@style/CCPBigButton">
+        <item name="android:textColor">@color/ec_grey_btn_text_color</item>
+        <item name="android:background">@drawable/ec_btn_style_grey</item>
+    </style>
+    <style name="CCPBigRedButton" parent="@style/CCPBigButton">
+        <item name="android:background">@drawable/btn_style_red</item>
+    </style>
+    <style name="CCPList">
+        <item name="android:scrollbars">none</item>
+        <item name="android:fadingEdge">none</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:listSelector">@color/transparent</item>
+        <item name="android:divider">@color/list_devider_color</item>
+        <item name="android:dividerHeight">0.0px</item>
+    </style>
     <style name="ImageScale" parent="android:Theme.Translucent.NoTitleBar">
         <item name="android:windowAnimationStyle">@style/AnimImage</item>
         <item name="android:windowNoTitle">true</item>
@@ -1152,6 +1281,13 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         
+    </style>
+    <style name="NavPage">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/navpage</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
     </style>
     <style name="SoundVolumeStyle" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground"> @android:color/transparent </item>

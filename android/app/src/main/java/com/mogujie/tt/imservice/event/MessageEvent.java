@@ -42,7 +42,12 @@ public class MessageEvent {
       HANDLER_IMAGE_UPLOAD_FAILD,
         IMAGE_UPLOAD_FAILD,
         HANDLER_IMAGE_UPLOAD_SUCCESS,
-        IMAGE_UPLOAD_SUCCESS
+        IMAGE_UPLOAD_SUCCESS,
+
+        HANDLER_FILE_UPLOAD_FAILD,
+        FILE_UPLOAD_FAILD,
+        HANDLER_FILE_UPLOAD_SUCCESS,
+        FILE_UPLOAD_SUCCESS
      }
 
     public MessageEntity getMessageEntity() {

@@ -24,4 +24,15 @@
     <dimen name="album_list_item_name_size">15sp</dimen>
     <dimen name="album_top_cancel_size">14sp</dimen>
 
+    <dimen name="ButtonCornerSize">2.0dip</dimen>
+
+    <dimen name="SmallListHeight">48.0dip</dimen>
+
+    <dimen name="NormalTextSize">16.0dip</dimen>
+
+    <dimen name="SmallestPadding">2.0dip</dimen>
+
+    <dimen name="MediumListHeight">56.0dip</dimen>
+
+    <dimen name="LargePadding">16.0dip</dimen>
 </resources>
