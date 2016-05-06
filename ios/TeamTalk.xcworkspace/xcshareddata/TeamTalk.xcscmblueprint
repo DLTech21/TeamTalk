@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B9F1A252D7121BCED3BE0D58C2309A7C07BB2E36",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "313AB1617C05886BE01B5AD4F99920571E7121DD" : 0,
+    "B9F1A252D7121BCED3BE0D58C2309A7C07BB2E36" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "54F839A8-64EA-43F9-938E-4FFC0E37BA70",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "313AB1617C05886BE01B5AD4F99920571E7121DD" : "..\/1500meter\/happychat4ios\/happychat4ios",
+    "B9F1A252D7121BCED3BE0D58C2309A7C07BB2E36" : "tt-iOS\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "TeamTalk",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "TeamTalk.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/donal.tong%2540gmail.com@git.oschina.net\/Donal\/happychat4ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "313AB1617C05886BE01B5AD4F99920571E7121DD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/donal.tong%2540gmail.com@git.oschina.net\/Donal\/tt-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B9F1A252D7121BCED3BE0D58C2309A7C07BB2E36"
+    }
+  ]
+}

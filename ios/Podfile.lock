@@ -1,0 +1,113 @@
+PODS:
+  - AFNetworking (2.3.1):
+    - AFNetworking/NSURLConnection (= 2.3.1)
+    - AFNetworking/NSURLSession (= 2.3.1)
+    - AFNetworking/Reachability (= 2.3.1)
+    - AFNetworking/Security (= 2.3.1)
+    - AFNetworking/Serialization (= 2.3.1)
+    - AFNetworking/UIKit (= 2.3.1)
+  - AFNetworking/NSURLConnection (2.3.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.3.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.3.1)
+  - AFNetworking/Security (2.3.1)
+  - AFNetworking/Serialization (2.3.1)
+  - AFNetworking/UIKit (2.3.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - APAddressBook (0.2.3):
+    - APAddressBook/Core (= 0.2.3)
+  - APAddressBook/Core (0.2.3)
+  - BaiduMapKit (2.10.0)
+  - DACircularProgress (2.2.0)
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
+  - HPGrowingTextView (1.1)
+  - LCActionSheet (1.2.1)
+  - Masonry (0.6.4)
+  - MBProgressHUD (0.9.2)
+  - MWPhotoBrowser (1.4.1):
+    - DACircularProgress
+    - MBProgressHUD (~> 0.8)
+    - PSTCollectionView (~> 1.2)
+    - SDWebImage (~> 3.7)
+  - OHAlertView (3.0.1)
+  - ProtocolBuffers (1.9.9.2)
+  - PSTCollectionView (1.2.3)
+  - RegexKitLite (4.0)
+  - SCLAlertView-Objective-C (0.7.9)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
+  - SSKeychain (1.4.0)
+  - SVProgressHUD (2.0)
+  - SVWebViewController (1.0)
+  - TTTAttributedLabel (1.13.4)
+  - TZImagePickerController (1.1.1)
+  - XHImageViewer (0.1.2)
+  - YYKit (1.0.3):
+    - YYKit/no-arc (= 1.0.3)
+  - YYKit/no-arc (1.0.3)
+  - ZXingObjC (3.1.0):
+    - ZXingObjC/All (= 3.1.0)
+  - ZXingObjC/All (3.1.0)
+
+DEPENDENCIES:
+  - AFNetworking (~> 2.3.0)
+  - APAddressBook
+  - BaiduMapKit
+  - DACircularProgress (~> 2.2.0)
+  - FMDB (~> 2.3)
+  - HPGrowingTextView (~> 1.1)
+  - LCActionSheet
+  - Masonry
+  - MBProgressHUD (~> 0.8)
+  - MWPhotoBrowser
+  - OHAlertView
+  - ProtocolBuffers (~> 1.9.4)
+  - PSTCollectionView (~> 1.2.1)
+  - RegexKitLite
+  - SCLAlertView-Objective-C (~> 0.7.3)
+  - SDWebImage (~> 3.6)
+  - SSKeychain
+  - SVProgressHUD
+  - SVWebViewController
+  - TTTAttributedLabel
+  - TZImagePickerController
+  - XHImageViewer
+  - YYKit
+  - ZXingObjC
+
+SPEC CHECKSUMS:
+  AFNetworking: 05b9f6e3aa5ac45bc383b4bb108ef338080a26c7
+  APAddressBook: 2a91bf05999548bea210ec9d1a68073f4dc8bfce
+  BaiduMapKit: 5df028c6b455d29e68e89694adbcf9d37a4bcc99
+  DACircularProgress: 0f92b77239d5f3c612fc66185e2998391ac8e054
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  HPGrowingTextView: 88a716d97fb853bcb08a4a08e4727da17efc9b19
+  LCActionSheet: 1a1c891ef6589c29c5964a8d89c47ecd980438d7
+  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MWPhotoBrowser: 2531e682860d62b8a7ba8659de02eb9040e431e5
+  OHAlertView: 8be643171f973214045e734bf937f5fe70dfdc2b
+  ProtocolBuffers: 7111461618460961e6b7469177ec45ee551b4f0e
+  PSTCollectionView: 6749df92885353521f55279a7ce2b293762e2be4
+  RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
+  SCLAlertView-Objective-C: e36ab12dc1ec4ff6f932888083b21d71a3a1ad23
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  SSKeychain: c71293fa57216a40ab06c23f4085387583293de4
+  SVProgressHUD: e9e7c893686a20da55a28015ed384d9425e15479
+  SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
+  TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
+  TZImagePickerController: bcd8928e5d8a2f7f4e295b9175d72de26834983d
+  XHImageViewer: 7b275d2aa829e56761c30303b9d51cae086a90b9
+  YYKit: fa66d61240458f14562c33c85c91d11131e43261
+  ZXingObjC: bf15b3814f7a105b6d99f47da2333c93a063650a
+
+COCOAPODS: 0.39.0
