@@ -10,7 +10,7 @@
 		4611EA701CAB6A8B00D4DB63 /* DDSendVoiceMessageAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4611EA6F1CAB6A8B00D4DB63 /* DDSendVoiceMessageAPI.m */; };
 		4626142C1CB8F306005BDCAA /* ModifyPassAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4626142B1CB8F306005BDCAA /* ModifyPassAPI.m */; };
 		462614341CBCCA6F005BDCAA /* MTTRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 462614331CBCCA6F005BDCAA /* MTTRegisterViewController.m */; };
-		462614371CBCD58C005BDCAA /* ApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 462614361CBCD58C005BDCAA /* ApiClient.m */; };
+		462614371CBCD58C005BDCAA /* ApiClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 462614361CBCD58C005BDCAA /* ApiClient.mm */; };
 		462CF86D1C9FAA52003883F7 /* bubble.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 462CF86C1C9FAA52003883F7 /* bubble.bundle */; };
 		462CF8701CA02936003883F7 /* DDChatLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 462CF86F1CA02936003883F7 /* DDChatLocationCell.m */; };
 		462CF8B91CA03039003883F7 /* districtsdatabase.db in Resources */ = {isa = PBXBuildFile; fileRef = 462CF8711CA03039003883F7 /* districtsdatabase.db */; };
@@ -63,6 +63,19 @@
 		462CF9201CA0EAC7003883F7 /* pic_pin_serach_MapModel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 462CF9151CA0EAC7003883F7 /* pic_pin_serach_MapModel@3x.png */; };
 		462CF9211CA0EAC7003883F7 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 462CF9171CA0EAC7003883F7 /* Place.m */; };
 		462CF9221CA0EAC7003883F7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 462CF9191CA0EAC7003883F7 /* ViewController.m */; };
+		4640CA891CEACF080039BA4C /* libsecurity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4640CA881CEACF080039BA4C /* libsecurity.a */; };
+		468BBCB41CDC8EEA00D5307A /* libGeTuiSdk-1.4.2-noidfa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 468BBCB31CDC8EEA00D5307A /* libGeTuiSdk-1.4.2-noidfa.a */; };
+		468BBCB61CDC8F4000D5307A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 468BBCB51CDC8F4000D5307A /* libz.tbd */; };
+		468BBCB81CDC8F4800D5307A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 468BBCB71CDC8F4800D5307A /* libsqlite3.tbd */; };
+		468BBCBA1CDC8F4E00D5307A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 468BBCB91CDC8F4E00D5307A /* Security.framework */; };
+		468BBCBC1CDC8F5400D5307A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 468BBCBB1CDC8F5400D5307A /* MobileCoreServices.framework */; };
+		468BBCBE1CDC8F5800D5307A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 468BBCBD1CDC8F5800D5307A /* SystemConfiguration.framework */; };
+		468BBCC01CDC8F5D00D5307A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 468BBCBF1CDC8F5D00D5307A /* CoreTelephony.framework */; };
+		468BBCC21CDC8F6200D5307A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 468BBCC11CDC8F6200D5307A /* AVFoundation.framework */; };
+		468BBCC41CDC8F6600D5307A /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 468BBCC31CDC8F6600D5307A /* JavaScriptCore.framework */; };
+		468BBCC61CDC8F6A00D5307A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 468BBCC51CDC8F6A00D5307A /* CoreLocation.framework */; };
+		468BBCC81CDC8F6F00D5307A /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 468BBCC71CDC8F6F00D5307A /* CoreBluetooth.framework */; };
+		469697AB1CE2E2C500E86CC2 /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 469697AA1CE2E2C500E86CC2 /* GroupsViewController.m */; };
 		46C53DA11CDADD8700034CF5 /* IMBaseDefine.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C53D901CDADD8700034CF5 /* IMBaseDefine.pb.m */; };
 		46C53DA21CDADD8700034CF5 /* IMBuddy.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C53D921CDADD8700034CF5 /* IMBuddy.pb.m */; };
 		46C53DA31CDADD8700034CF5 /* IMFile.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C53D941CDADD8700034CF5 /* IMFile.pb.m */; };
@@ -151,7 +164,6 @@
 		C054EC4F1B3270D900078809 /* TeamTalkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C054EC4E1B3270D900078809 /* TeamTalkTests.m */; };
 		C054EC641B32734800078809 /* MTTConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = C054EC631B32734800078809 /* MTTConstant.m */; };
 		C054EC671B32737300078809 /* MTTUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C054EC661B32737300078809 /* MTTUtil.m */; };
-		C054EC851B3274E200078809 /* libsecurity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C054EC831B3274E200078809 /* libsecurity.a */; };
 		C054EC881B32752100078809 /* MTTDatabaseUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C054EC871B32752100078809 /* MTTDatabaseUtil.m */; };
 		C054ED121B3276DE00078809 /* bitwise.c in Sources */ = {isa = PBXBuildFile; fileRef = C054EC8E1B3276DE00078809 /* bitwise.c */; };
 		C054ED131B3276DE00078809 /* framing.c in Sources */ = {isa = PBXBuildFile; fileRef = C054EC8F1B3276DE00078809 /* framing.c */; };
@@ -476,7 +488,7 @@
 		462614321CBCCA6F005BDCAA /* MTTRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTRegisterViewController.h; sourceTree = "<group>"; };
 		462614331CBCCA6F005BDCAA /* MTTRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTRegisterViewController.m; sourceTree = "<group>"; };
 		462614351CBCD58C005BDCAA /* ApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiClient.h; sourceTree = "<group>"; };
-		462614361CBCD58C005BDCAA /* ApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiClient.m; sourceTree = "<group>"; };
+		462614361CBCD58C005BDCAA /* ApiClient.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ApiClient.mm; sourceTree = "<group>"; };
 		462CF86C1C9FAA52003883F7 /* bubble.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = bubble.bundle; sourceTree = "<group>"; };
 		462CF86E1CA02936003883F7 /* DDChatLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChatLocationCell.h; sourceTree = "<group>"; };
 		462CF86F1CA02936003883F7 /* DDChatLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChatLocationCell.m; sourceTree = "<group>"; };
@@ -575,6 +587,21 @@
 		462CF9171CA0EAC7003883F7 /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
 		462CF9181CA0EAC7003883F7 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		462CF9191CA0EAC7003883F7 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4640CA881CEACF080039BA4C /* libsecurity.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libsecurity.a; sourceTree = "<group>"; };
+		468BBCB21CDC8EEA00D5307A /* GeTuiSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiSdk.h; sourceTree = "<group>"; };
+		468BBCB31CDC8EEA00D5307A /* libGeTuiSdk-1.4.2-noidfa.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGeTuiSdk-1.4.2-noidfa.a"; sourceTree = "<group>"; };
+		468BBCB51CDC8F4000D5307A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		468BBCB71CDC8F4800D5307A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		468BBCB91CDC8F4E00D5307A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		468BBCBB1CDC8F5400D5307A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		468BBCBD1CDC8F5800D5307A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		468BBCBF1CDC8F5D00D5307A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		468BBCC11CDC8F6200D5307A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		468BBCC31CDC8F6600D5307A /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		468BBCC51CDC8F6A00D5307A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		468BBCC71CDC8F6F00D5307A /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		469697A91CE2E2C500E86CC2 /* GroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsViewController.h; sourceTree = "<group>"; };
+		469697AA1CE2E2C500E86CC2 /* GroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsViewController.m; sourceTree = "<group>"; };
 		46C53D8F1CDADD8700034CF5 /* IMBaseDefine.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBaseDefine.pb.h; sourceTree = "<group>"; };
 		46C53D901CDADD8700034CF5 /* IMBaseDefine.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBaseDefine.pb.m; sourceTree = "<group>"; };
 		46C53D911CDADD8700034CF5 /* IMBuddy.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBuddy.pb.h; sourceTree = "<group>"; };
@@ -715,7 +742,6 @@
 		C054EC631B32734800078809 /* MTTConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTConstant.m; sourceTree = "<group>"; };
 		C054EC651B32737300078809 /* MTTUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTUtil.h; sourceTree = "<group>"; };
 		C054EC661B32737300078809 /* MTTUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTUtil.m; sourceTree = "<group>"; };
-		C054EC831B3274E200078809 /* libsecurity.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libsecurity.a; sourceTree = "<group>"; };
 		C054EC841B3274E200078809 /* security.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = security.h; sourceTree = "<group>"; };
 		C054EC861B32752100078809 /* MTTDatabaseUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTDatabaseUtil.h; sourceTree = "<group>"; };
 		C054EC871B32752100078809 /* MTTDatabaseUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTDatabaseUtil.m; sourceTree = "<group>"; };
@@ -1244,9 +1270,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4640CA891CEACF080039BA4C /* libsecurity.a in Frameworks */,
+				468BBCC81CDC8F6F00D5307A /* CoreBluetooth.framework in Frameworks */,
+				468BBCC61CDC8F6A00D5307A /* CoreLocation.framework in Frameworks */,
+				468BBCC41CDC8F6600D5307A /* JavaScriptCore.framework in Frameworks */,
+				468BBCC21CDC8F6200D5307A /* AVFoundation.framework in Frameworks */,
+				468BBCC01CDC8F5D00D5307A /* CoreTelephony.framework in Frameworks */,
+				468BBCBE1CDC8F5800D5307A /* SystemConfiguration.framework in Frameworks */,
+				468BBCBC1CDC8F5400D5307A /* MobileCoreServices.framework in Frameworks */,
+				468BBCBA1CDC8F4E00D5307A /* Security.framework in Frameworks */,
+				468BBCB81CDC8F4800D5307A /* libsqlite3.tbd in Frameworks */,
+				468BBCB61CDC8F4000D5307A /* libz.tbd in Frameworks */,
 				C0AE3A1B1B32C95A00B67232 /* libz.dylib in Frameworks */,
+				468BBCB41CDC8EEA00D5307A /* libGeTuiSdk-1.4.2-noidfa.a in Frameworks */,
 				817CB3B01B3BC6E80004AFEA /* Fabric.framework in Frameworks */,
-				C054EC851B3274E200078809 /* libsecurity.a in Frameworks */,
 				6802F6EF490DEE71C0552E98 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1492,6 +1529,24 @@
 			path = LocationMap;
 			sourceTree = "<group>";
 		};
+		468BBCB11CDC8EEA00D5307A /* GtSdkLib-noidfa */ = {
+			isa = PBXGroup;
+			children = (
+				468BBCB21CDC8EEA00D5307A /* GeTuiSdk.h */,
+				468BBCB31CDC8EEA00D5307A /* libGeTuiSdk-1.4.2-noidfa.a */,
+			);
+			path = "GtSdkLib-noidfa";
+			sourceTree = "<group>";
+		};
+		469697A81CE2E0A200E86CC2 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				469697A91CE2E2C500E86CC2 /* GroupsViewController.h */,
+				469697AA1CE2E2C500E86CC2 /* GroupsViewController.m */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
 		46C53DAD1CDB2A7C00034CF5 /* Friend */ = {
 			isa = PBXGroup;
 			children = (
@@ -1504,6 +1559,16 @@
 		527B2E51021DC51A46265D31 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				468BBCC71CDC8F6F00D5307A /* CoreBluetooth.framework */,
+				468BBCC51CDC8F6A00D5307A /* CoreLocation.framework */,
+				468BBCC31CDC8F6600D5307A /* JavaScriptCore.framework */,
+				468BBCC11CDC8F6200D5307A /* AVFoundation.framework */,
+				468BBCBF1CDC8F5D00D5307A /* CoreTelephony.framework */,
+				468BBCBD1CDC8F5800D5307A /* SystemConfiguration.framework */,
+				468BBCBB1CDC8F5400D5307A /* MobileCoreServices.framework */,
+				468BBCB91CDC8F4E00D5307A /* Security.framework */,
+				468BBCB71CDC8F4800D5307A /* libsqlite3.tbd */,
+				468BBCB51CDC8F4000D5307A /* libz.tbd */,
 				817CB3AE1B3BC6E80004AFEA /* Fabric.framework */,
 				C0AE3A1A1B32C95A00B67232 /* libz.dylib */,
 				FC7C945FDB2D00B8D439C777 /* libPods.a */,
@@ -1561,6 +1626,7 @@
 		C054EC261B3270D900078809 = {
 			isa = PBXGroup;
 			children = (
+				468BBCB11CDC8EEA00D5307A /* GtSdkLib-noidfa */,
 				462CF90C1CA0EAC7003883F7 /* LocationMap */,
 				462CF8DA1CA0D248003883F7 /* DLFramework */,
 				462CF8711CA03039003883F7 /* districtsdatabase.db */,
@@ -1679,6 +1745,7 @@
 		C054EC5E1B32727100078809 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				469697A81CE2E0A200E86CC2 /* Group */,
 				46C53DAD1CDB2A7C00034CF5 /* Friend */,
 				462614311CBCC96A005BDCAA /* Register */,
 				81A468271B4D633500796B25 /* Search */,
@@ -1767,7 +1834,7 @@
 		C054EC821B3274DB00078809 /* Security */ = {
 			isa = PBXGroup;
 			children = (
-				C054EC831B3274E200078809 /* libsecurity.a */,
+				4640CA881CEACF080039BA4C /* libsecurity.a */,
 				C054EC841B3274E200078809 /* security.h */,
 			);
 			path = Security;
@@ -2352,7 +2419,7 @@
 				C07E65C31B328ADE00A5102C /* MTTAFNetworkingClient.h */,
 				C07E65C41B328ADE00A5102C /* MTTAFNetworkingClient.m */,
 				462614351CBCD58C005BDCAA /* ApiClient.h */,
-				462614361CBCD58C005BDCAA /* ApiClient.m */,
+				462614361CBCD58C005BDCAA /* ApiClient.mm */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -3300,7 +3367,7 @@
 				C07E649D1B3280E700A5102C /* UIColor+AQGridView.m in Sources */,
 				462CF91F1CA0EAC7003883F7 /* MapCheckViewController.m in Sources */,
 				C07E67391B32B08900A5102C /* RecentUserCell.m in Sources */,
-				462614371CBCD58C005BDCAA /* ApiClient.m in Sources */,
+				462614371CBCD58C005BDCAA /* ApiClient.mm in Sources */,
 				C07E67181B32AEC100A5102C /* AlbumDetailsBottomBar.m in Sources */,
 				81A4682A1B4D684500796B25 /* MTTDetailSearchViewControll.m in Sources */,
 				C07E664D1B328F1A00A5102C /* MsgReadACKAPI.m in Sources */,
@@ -3373,6 +3440,7 @@
 				46C53DA51CDADD8700034CF5 /* IMLogin.pb.m in Sources */,
 				462CF8CB1CA03039003883F7 /* SDPhotoBrowser.m in Sources */,
 				C07E66391B328F1A00A5102C /* DDCreateGroupAPI.m in Sources */,
+				469697AB1CE2E2C500E86CC2 /* GroupsViewController.m in Sources */,
 				C07E664A1B328F1A00A5102C /* GetMsgByMsgIDsAPI.m in Sources */,
 				C07E67021B32ADE600A5102C /* DDAlbumDetailsViewControll.m in Sources */,
 				C054ED181B3276DE00078809 /* exc_10_32_table.c in Sources */,
@@ -3665,6 +3733,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TeamTalk/Exist/Security",
 					"$(PROJECT_DIR)/TeamTalk/Exist/MobClick",
+					"$(PROJECT_DIR)/GtSdkLib-noidfa",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = im.dl.tt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3695,6 +3764,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TeamTalk/Exist/Security",
 					"$(PROJECT_DIR)/TeamTalk/Exist/MobClick",
+					"$(PROJECT_DIR)/GtSdkLib-noidfa",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = im.dl.tt;
 				PRODUCT_NAME = "$(TARGET_NAME)";

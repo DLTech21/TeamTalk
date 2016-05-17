@@ -181,10 +181,7 @@
         static NSString* identifier = @"myInfoCellIdentifier";
         MTTUserInfoCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
         
-        [[DDUserModule shareInstance] getUserForUserID:[RuntimeStatus instance].user.objID Block:^(MTTUserEntity *user) {
-            self.user=user;
-            [cell setCellContent:[user getAvatarUrl] Name:user.name Cname:user.nick];
-        }];
+        [cell setCellContent:getUserAvatar Name:getUserNickname Cname:getUserNickname];
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         return cell;
         

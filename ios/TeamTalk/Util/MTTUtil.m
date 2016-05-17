@@ -16,7 +16,7 @@
 #import "MTTPinyinConstant.h"
 #import "SessionModule.h"
 #import "DDMessageModule.h"
-
+#import "DDUserModule.h"
 
 @implementation MTTUtil
 
@@ -58,6 +58,7 @@
     [[DDMessageModule shareInstance] removeAllUnreadMessages];
     [[SessionModule instance] clearSession];
     [[DDTcpClientManager instance] disconnect];
+    [[DDUserModule shareInstance] clearRecentUser];
     [DDClientState shareInstance].userState = DDUserOffLineInitiative;
 }
 

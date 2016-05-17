@@ -39,3 +39,7 @@
 
 #define APIURL     @"http://115.159.211.199"
 #endif
+
+#define kGtAppId           @"JF5g0qW7Xd9VpX9Zd3SXi9"
+#define kGtAppKey          @"bStLfBKQ1Y6IK54ebUvMMA"
+#define kGtAppSecret       @"8ur1p4ZX8H6b1GzNhLQ4Y9"

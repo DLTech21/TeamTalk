@@ -41,6 +41,8 @@
 #define HideAddSomethingViewNotification @"HideAddSomethingViewNotification"
 
 #define WechatLoginNotification @"WechatLoginNotification"
+
+#define KNOTIFICATION_LOGINCHANGE @"loginStateChange"
 //FMDB
 #define FMDBQuickCheck(SomeBool) { if (!(SomeBool)) { NSLog(@"Failure on line %d", __LINE__);} }
 #define DATABASE_PATH [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]stringByAppendingString:[NSString stringWithFormat:@"/%@-%@.db", @"mi", getUserID]]
@@ -122,6 +124,9 @@
 #define setUserPhone(user) [[NSUserDefaults standardUserDefaults] setObject:(user) forKey:UserPhone];[[NSUserDefaults standardUserDefaults] synchronize];
 #define getUserPhone [[NSUserDefaults standardUserDefaults] objectForKey:UserPhone]
 
+#define setUserPassword(user) [[NSUserDefaults standardUserDefaults] setObject:(user) forKey:UserPassword];[[NSUserDefaults standardUserDefaults] synchronize];
+#define getUserPassword [[NSUserDefaults standardUserDefaults] objectForKey:UserPassword]
+
 #define setUserPersonalSign(user) [[NSUserDefaults standardUserDefaults] setObject:(user) forKey:UserPersonalSign];[[NSUserDefaults standardUserDefaults] synchronize];
 #define getUserPersonalSign [[NSUserDefaults standardUserDefaults] objectForKey:UserPersonalSign]
 
@@ -158,7 +163,7 @@
 #define UserPersonalSign @"app.user.personalsign"
 #define UserPhone @"app.user.phone"
 #define UserArea @"UserArea"
-
+#define UserPassword @"app.user.password"
 #define FontScale @"FontScale"
 
 #define SoundOn @"SoundOn"

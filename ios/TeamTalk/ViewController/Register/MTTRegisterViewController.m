@@ -8,7 +8,7 @@
 
 #import "MTTRegisterViewController.h"
 #import "UIView+SDAutoLayout.h"
-#import "ApiClient.h"
+
 @interface MTTRegisterViewController () <UITextFieldDelegate>
 @property (nonatomic, strong) UITextField *accountTF;
 @property (nonatomic, strong) UITextField *passTF;

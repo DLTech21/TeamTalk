@@ -302,7 +302,6 @@
 -(void)loadLocalSession:(void(^)(bool isok))block
 {
     [[MTTDatabaseUtil instance] loadSessionsCompletion:^(NSArray *session, NSError *error) {
-        
         [self addSessionsToSessionModel:session];
         
         block(YES);

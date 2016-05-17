@@ -307,7 +307,7 @@
 {
     //[self.items removeAllObjects];
     self.items = [self.model sortByContactPy];
-    [self.tableView reloadData];
+   [self.tableView reloadData];
 }
 -(void)swichToShowDepartment
 {
@@ -383,6 +383,12 @@
                 NSString *fl1 = [[NSString stringWithFormat:@"%c",char1] uppercaseString];
                 char char2 = [MTTUtil getFirstChar:obj2];
                 NSString *fl2 = [[NSString stringWithFormat:@"%c",char2] uppercaseString];
+                if ([fl1 isEqualToString:@"#"]) {
+                    return 1;
+                }
+                if ([fl2 isEqualToString:@"#"]) {
+                    return -1;
+                }
                 return [fl1 compare:fl2];
             }];
             return self.allIndexes;

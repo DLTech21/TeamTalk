@@ -87,6 +87,8 @@
                                                  name:DDNotificationPCLoginStatusChanged
                                                object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutNotification:) name:DDNotificationLogout object:nil];
+    
     return self;
 }
 
@@ -111,54 +113,14 @@
     self.lastMsgs = [NSMutableDictionary new];
     self.isMacOnline = 0;
     
-    /*
-     [[SessionModule instance] loadLocalSession:^(bool isok) {
-     
-     if (isok) {
-     [self.items addObjectsFromArray:[[SessionModule instance] getAllSessions]];
-     [self sortItems];
-     
-     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-     
-     [[SessionModule instance] getRecentSession:^(NSUInteger count) {
-     
-     [self.items removeAllObjects];
-     [self.items addObjectsFromArray:[[SessionModule instance] getAllSessions]];
-     [self sortItems];
-     NSUInteger unreadcount =  [[self.items valueForKeyPath:@"@sum.unReadMsgCount"] integerValue];
-     
-     [self setToolbarBadge:unreadcount];
-     
-     }];
-     });
-     }
-     }];
-     */
-    [self.items addObjectsFromArray:[[SessionModule instance] getAllSessions]];
-    [self sortItems];
-    
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        [[SessionModule instance] getRecentSession:^(NSUInteger count) {
-            
-            [self.items removeAllObjects];
+    [[SessionModule instance] loadLocalSession:^(bool isok) {
+        if (isok) {
             [self.items addObjectsFromArray:[[SessionModule instance] getAllSessions]];
-            
             [self sortItems];
-            
-            //            NSUInteger unreadcount =  [[self.items valueForKeyPath:@"@sum.unReadMsgCount"] integerValue];
-            NSUInteger unreadcount =  [[SessionModule instance]getAllUnreadMessageCount];
-            
-            [self setToolbarBadge:unreadcount];
-            
-        }];
-    });
-    
+        }
+     }];
     
     [SessionModule instance].delegate=self;
-    
-//    [self addCustomSearchControll];
     
     // 获取mac登陆状态
     [self getMacLoginStatus];
@@ -537,11 +499,31 @@
 - (void)n_receiveStartLoginNotification:(NSNotification*)notification
 {
     self.title = APP_NAME;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[SessionModule instance] getRecentSession:^(NSUInteger count) {
+            
+            [self.items removeAllObjects];
+            [self.items addObjectsFromArray:[[SessionModule instance] getAllSessions]];
+            [self sortItems];
+            [self setToolbarBadge:count];
+            
+        }];
+    });
 }
 
 - (void)n_receiveLoginNotification:(NSNotification*)notification
 {
     self.title = APP_NAME;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[SessionModule instance] getRecentSession:^(NSUInteger count) {
+            
+            [self.items removeAllObjects];
+            [self.items addObjectsFromArray:[[SessionModule instance] getAllSessions]];
+            [self sortItems];
+            [self setToolbarBadge:count];
+            
+        }];
+    });
 }
 
 -(void)n_receiveReLoginSuccessNotification
@@ -592,5 +574,9 @@
         self.isMacOnline = 1;
     }
     [self.tableView reloadData];
+}
+
+-(void)logoutNotification:(NSNotification*)notification{
+    [self.items removeAllObjects];
 }
 @end

@@ -14,6 +14,8 @@
 #import "SCLAlertView.h"
 #import "UIView+SDAutoLayout.h"
 #import "MTTRegisterViewController.h"
+#import "DLAppUtil.h"
+#import "MTTUserEntity.h"
 @interface MTTLoginViewController ()<UITextFieldDelegate>
 
 @property(assign)CGPoint defaultCenter;
@@ -164,7 +166,6 @@
     HUD.dimBackground = YES;
     HUD.labelText = @"正在登录";
     
-    SCLAlertView *alert = [SCLAlertView new];
     [[LoginModule instance] loginWithUsername:userName password:password success:^(MTTUserEntity *user) {
         
         [HUD removeFromSuperview];
@@ -175,17 +176,28 @@
             [TheRuntime updateData];
             
             if (TheRuntime.pushToken) {
-                SendPushTokenAPI *pushToken = [[SendPushTokenAPI alloc] init];
-                [pushToken requestWithObject:TheRuntime.pushToken Completion:^(id response, NSError *error) {
-                    debugLog(@"%@", error.description);
-                }];
+//                SendPushTokenAPI *pushToken = [[SendPushTokenAPI alloc] init];
+//                [pushToken requestWithObject:TheRuntime.pushToken Completion:^(id response, NSError *error) {
+//                    debugLog(@"%@", error.description);
+//                }];
+                TheRuntime.clientId_gettui = getUserCode;
+                if (TheRuntime.clientId_gettui) {
+                    [[ApiClient sharedInstance] updateUserPush:TheRuntime.clientId_gettui Success:^(id model) {
+                    
+                    } failure:^(NSString *message) {
+                        
+                    }];
+                }
             }
-            MTTRootViewController *rootVC =[[MTTRootViewController alloc] init];
-//            UINavigationController *navRootVC =[[UINavigationController alloc] initWithRootViewController:rootVC];
-            [self pushViewController:rootVC animated:YES];
+            setUserID(user.objID);
+            setUserNickname(user.nick);
+            setUserAvatar(user.avatar);
+            setUserPhone(userName);
+            setUserPassword(password)
+            setIsLogin;
+            [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@YES];
         }
     } failure:^(NSString *error) {
-        debugLog(@"%@", error);
         [self.userLoginBtn setEnabled:YES];
 
         [HUD removeFromSuperview];

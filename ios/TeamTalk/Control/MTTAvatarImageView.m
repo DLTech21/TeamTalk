@@ -45,8 +45,43 @@
 - (float)p_getOriginStartXForAvatarCount:(NSUInteger)avatarCount row:(NSUInteger)row forScale:(NSUInteger)scale;
 @end
 @implementation MTTAvatarImageView
+{
+    float originalSize;
+}
 - (void)setAvatar:(NSString*)avatar group:(BOOL)group;
 {
+    originalSize = 50;
+    [self removeAllSubviews];
+    [self setImage:nil];
+    if (group)
+    {
+        UIImage* image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:avatar];
+        if (image) {
+            [self setImage:image];
+        }
+        else
+        {
+            NSString* avatarKey = [avatar copy];
+            if ([avatar hasSuffix:@";"])
+            {
+                avatar = [avatar substringToIndex:[avatar length] - 1];
+            }
+            NSArray* avatarArray = [avatar componentsSeparatedByString:@";"];
+            [self p_setGroupAvatar:avatarKey avatars:avatarArray];
+        }
+    }
+    else
+    {
+        //只有一个头像
+        NSURL* avatarURL = [NSURL safeURLWithString:avatar];
+        UIImage* placeholdImage = [UIImage imageNamed:@"user_placeholder"];
+        [self sd_setImageWithURL:avatarURL placeholderImage:placeholdImage];
+    }
+}
+
+- (void)setAvatar:(NSString*)avatar group:(BOOL)group avataImageSize:(float)size;
+{
+    originalSize = size;
     [self removeAllSubviews];
     [self setImage:nil];
     if (group)
@@ -129,17 +164,17 @@
     switch (avatarCount)
     {
         case 1:
-            return CGSizeMake(22 * scale, 22  * scale);
+            return CGSizeMake(22.0 * originalSize * scale / 50, 22.0 * originalSize * scale / 50);
         case 2:
         case 3:
         case 4:
-            return CGSizeMake(22 * scale, 22 * scale);
+            return CGSizeMake(22.0 * originalSize * scale / 50, 22.0 * originalSize * scale / 50);
         case 5:
         case 6:
         case 7:
         case 8:
         case 9:
-            return CGSizeMake(14 * scale, 14 * scale);
+            return CGSizeMake(14.0 * originalSize * scale / 50, 14.0 * originalSize * scale / 50);
         default:
             break;
     }
@@ -160,14 +195,14 @@
         case 7:
         case 8:
         case 9:
-            return 2 * scale;
+            return 2.0 * originalSize * scale / 50;
     }
     return 0;
 }
 
 - (float)p_getLeftAndRightForAvatarCount:(NSUInteger)avatarCount forScale:(NSUInteger)scale
 {
-    return 2 * scale;
+    return 2.0 * originalSize * scale / 50;
 }
 
 - (float)p_getOriginStartYForAvatarCount:(NSUInteger)avatarCount forScale:(NSUInteger)scale
@@ -176,18 +211,18 @@
     {
         case 1:
         case 2:
-            return 14 * scale;
+            return 14.0 * originalSize * scale / 50;
             break;
         case 3:
         case 4:
-            return 2 * scale;
+            return 2.0 * originalSize * scale / 50;
         case 5:
         case 6:
-            return 10 * scale;
+            return 10.0 * originalSize * scale / 50;
         case 7:
         case 8:
         case 9:
-            return 2 * scale;
+            return 2.0 * originalSize * scale / 50;
     }
     return 0;
 }
@@ -198,24 +233,24 @@
     {
         if (row == 0)
         {
-            return 14 * scale;
+            return 14.0 * originalSize * scale / 50;
         }
     }
     if (avatarCount == 5 || avatarCount == 8)
     {
         if (row == 0)
         {
-            return 10 * scale;
+            return 10.0 * originalSize * scale / 50;
         }
     }
     if (avatarCount == 7)
     {
         if (row == 0)
         {
-            return 18 * scale;
+            return 18.0 * originalSize * scale / 50;
         }
     }
-    return 2 * scale;
+    return 2.0 * originalSize * scale / 50;
 }
 
 - (NSUInteger)p_getRowForCount:(NSUInteger)avatarCount

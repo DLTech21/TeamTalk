@@ -141,7 +141,6 @@ static NSInteger const timeInterval = 1;
             [self p_requestCompletion:api];
             dispatch_async(dispatch_get_main_queue(), ^{
                 @try {
-                    debugLog(@"sdfsdf");
                      completion(response,nil);
                 }
                 @catch (NSException *exception) {

@@ -10,4 +10,5 @@
 
 @interface MTTAvatarImageView : UIImageView
 - (void)setAvatar:(NSString*)avatar group:(BOOL)group;
+- (void)setAvatar:(NSString*)avatar group:(BOOL)group avataImageSize:(float)size;
 @end

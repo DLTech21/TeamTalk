@@ -21,13 +21,14 @@
 #import "DDFixedGroupAPI.h"
 #import "Masonry.h"
 #import "MTTNotification.h"
+#import "GroupsViewController.h"
 
 @interface FriendsViewController ()
 @property(nonatomic,strong) NSMutableDictionary *items;
 @property(nonatomic,strong) NSMutableDictionary *keys;
 @property(nonatomic,strong) ContactsModule *model;
 @property(nonatomic,strong) NSArray *allIndexes;
-@property(nonatomic,strong) NSMutableArray *groups;
+@property(nonatomic,strong) NSArray *groups;
 @property(nonatomic,strong) NSArray *searchResult;
 @property(nonatomic,strong) UITableView *tableView;
 @property(nonatomic,strong) UISearchBar *searchBar;
@@ -94,31 +95,32 @@
     self.tableView.tableHeaderView=self.searchBar;
     self.tableView.separatorStyle = NO;
     
-    DDFixedGroupAPI *getFixgroup = [DDFixedGroupAPI new];
-    [getFixgroup requestWithObject:nil Completion:^(NSArray *response, NSError *error) {
-        
-        [response enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
-            NSString *groupID = [MTTUtil changeOriginalToLocalID:(UInt32)[obj[@"groupid"] integerValue] SessionType:SessionTypeSessionTypeGroup];
-            NSInteger version = [obj[@"version"] integerValue];
-            MTTGroupEntity *group = [[DDGroupModule instance] getGroupByGId:groupID];
-            if (group) {
-                if (group.objectVersion == version) {
-                    [self.groups addObject:group];
-                }else{
-                    [[DDGroupModule instance] getGroupInfogroupID:groupID completion:^(MTTGroupEntity *group) {
-                        [self.groups addObject:group];
-                        
-                    }];
-                }
-            }else{
-                [[DDGroupModule instance] getGroupInfogroupID:groupID completion:^(MTTGroupEntity *group) {
-                    [self.groups addObject:group];
-                }];
-            }
-            
-        }];
-        [self.tableView reloadData];
-    }];
+    self.groups = @[@"新的朋友", @"群组"];
+//    DDFixedGroupAPI *getFixgroup = [DDFixedGroupAPI new];
+//    [getFixgroup requestWithObject:nil Completion:^(NSArray *response, NSError *error) {
+//        
+//        [response enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop){
+//            NSString *groupID = [MTTUtil changeOriginalToLocalID:(UInt32)[obj[@"groupid"] integerValue] SessionType:SessionTypeSessionTypeGroup];
+//            NSInteger version = [obj[@"version"] integerValue];
+//            MTTGroupEntity *group = [[DDGroupModule instance] getGroupByGId:groupID];
+//            if (group) {
+//                if (group.objectVersion == version) {
+//                    [self.groups addObject:group];
+//                }else{
+//                    [[DDGroupModule instance] getGroupInfogroupID:groupID completion:^(MTTGroupEntity *group) {
+//                        [self.groups addObject:group];
+//                        
+//                    }];
+//                }
+//            }else{
+//                [[DDGroupModule instance] getGroupInfogroupID:groupID completion:^(MTTGroupEntity *group) {
+//                    [self.groups addObject:group];
+//                }];
+//            }
+//            
+//        }];
+//        [self.tableView reloadData];
+//    }];
     [self swichContactsToALl];
     
     // 右侧索引颜色透明
@@ -331,6 +333,12 @@
             NSString *fl1 = [[NSString stringWithFormat:@"%c",char1] uppercaseString];
             char char2 = [MTTUtil getFirstChar:obj2];
             NSString *fl2 = [[NSString stringWithFormat:@"%c",char2] uppercaseString];
+            if ([fl1 isEqualToString:@"#"]) {
+                return 1;
+            }
+            if ([fl2 isEqualToString:@"#"]) {
+                return -1;
+            }
             return [fl1 compare:fl2];
         }];
         return self.allIndexes;
@@ -413,9 +421,9 @@
     if (self.selectIndex == 0) {
         if (indexPath.section == 0) {
             
-            MTTGroupEntity *group = [self.groups objectAtIndex:indexPath.row];
-            [cell setCellContent:nil Name:group.name];
-            [cell setGroupAvatar:group];
+            NSString *group = [self.groups objectAtIndex:indexPath.row];
+            [cell setCellContent:nil Name:group];
+//            [cell setGroupAvatar:group];
         }
         else
         {
@@ -475,15 +483,19 @@
     }
     if (self.selectIndex == 0) {
         if (indexPath.section == 0) {
-            if(self.isFromAt){
-                return;
+//            if(self.isFromAt){
+//                return;
+//            }
+//            MTTGroupEntity *group = [self.groups objectAtIndex:indexPath.row];
+//            MTTSessionEntity *session = [[MTTSessionEntity alloc] initWithSessionID:group.objID type:SessionTypeSessionTypeGroup];
+//            [session setSessionName:group.name];
+//            ChattingMainViewController *main = [ChattingMainViewController shareInstance];
+//            [main showChattingContentForSession:session];
+//            [self pushViewController:main animated:YES];
+            if (indexPath.row == 1) {
+                GroupsViewController *vc = [[GroupsViewController alloc] init];
+                [self pushViewController:vc animated:YES];
             }
-            MTTGroupEntity *group = [self.groups objectAtIndex:indexPath.row];
-            MTTSessionEntity *session = [[MTTSessionEntity alloc] initWithSessionID:group.objID type:SessionTypeSessionTypeGroup];
-            [session setSessionName:group.name];
-            ChattingMainViewController *main = [ChattingMainViewController shareInstance];
-            [main showChattingContentForSession:session];
-            [self pushViewController:main animated:YES];
             return;
         }
         NSString *keyStr = [[self allKeys] objectAtIndex:indexPath.section-1];

@@ -84,7 +84,7 @@
     [_database setLogsErrors:NO];
     if (![_database open])
     {
-        DDLog(@"打开数据库失败");
+        debugLog(@"打开数据库失败");
     }
     else
     {
@@ -159,7 +159,7 @@
     }
     
     
-    NSString *dbPath = [directorPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@",TheRuntime.user.objID,DB_FILE_NAME]];
+    NSString *dbPath = [directorPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@",getUserID,DB_FILE_NAME]];
     return dbPath;
 }
 

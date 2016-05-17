@@ -161,6 +161,9 @@
 {
     DDUserModule* userModule = [DDUserModule shareInstance];
     [[userModule recentUsers] removeAllObjects];
+    [_allUsers removeAllObjects];
+    [_allUsersNick removeAllObjects];
+    [_friendUsers removeAllObjects];
 }
 
 @end

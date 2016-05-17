@@ -19,7 +19,9 @@
 #define AppSecret @"a10211aac04334b49d39b779a350621e"
 #import <BaiduMapAPI_Base/BMKBaseComponent.h>
 #import "Tool.h"
-@interface AppDelegate ()
+#import "GeTuiSdk.h"
+#import "DLAppUtil.h"
+@interface AppDelegate ()<GeTuiSdkDelegate>
 
 @end
 
@@ -29,7 +31,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 //    [Fabric with:@[CrashlyticsKit]];
-    
+    [GeTuiSdk startSdkWithAppId:kGtAppId appKey:kGtAppKey appSecret:kGtAppSecret delegate:self];
     BMKMapManager* mapManager = [[BMKMapManager alloc]init];
     BOOL ret = [mapManager start:MAP_AK  generalDelegate:nil];
     if (!ret) {
@@ -61,17 +63,41 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-    
-    MTTLoginViewController *loginVC =[[MTTLoginViewController alloc] initWithNibName:@"MTTLoginViewController" bundle:nil];
-    UINavigationController *navRoot =[[UINavigationController alloc] initWithRootViewController:loginVC];
-    navRoot.hidesBottomBarWhenPushed =YES;
-    self.window.rootViewController =navRoot;
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loginStateChange:)
+                                                 name:KNOTIFICATION_LOGINCHANGE
+                                               object:nil];
+//    MTTLoginViewController *loginVC =[[MTTLoginViewController alloc] initWithNibName:@"MTTLoginViewController" bundle:nil];
+//    UINavigationController *navRoot =[[UINavigationController alloc] initWithRootViewController:loginVC];
+//    navRoot.hidesBottomBarWhenPushed =YES;
+//    self.window.rootViewController =navRoot;
+    [self loginStateChange:nil];
     [self.window makeKeyAndVisible];
     
     return YES;
 }
 
+-(void)loginStateChange:(NSNotification *)notification
+{
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    BOOL loginSuccess = [notification.object boolValue];
+    if (isLogin || loginSuccess) {
+        if (_welcomeViewController == nil) {
+            _welcomeViewController = [[MTTRootViewController alloc]init];
+            
+        }
+        _mainNav = [[UINavigationController alloc] initWithRootViewController:_welcomeViewController];
+        self.window.rootViewController = _mainNav;
+    }
+    else{
+        _welcomeViewController = nil;
+        _mainNav = nil;
+        MTTLoginViewController *loginVC =[[MTTLoginViewController alloc] initWithNibName:@"MTTLoginViewController" bundle:nil];
+        UINavigationController *navRoot =[[UINavigationController alloc] initWithRootViewController:loginVC];
+        navRoot.hidesBottomBarWhenPushed =YES;
+        self.window.rootViewController = navRoot;
+    }
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -123,11 +149,11 @@
     NSString *dt = [token stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     NSString *dn = [dt stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     TheRuntime.pushToken= [dn stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [GeTuiSdk registerDeviceToken:TheRuntime.pushToken];
 }
 
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSString *error_str = [NSString stringWithFormat: @"%@", error];
-    NSLog(@"获取令牌失败:  %@",error_str);
 }
 // 处理推送消息
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
@@ -147,5 +173,13 @@
         [[ChattingMainViewController shareInstance] showChattingContentForSession:session];
     }
 }
-             
+
+- (void)GeTuiSdkDidRegisterClient:(NSString *)clientId {
+    setUserCode(clientId);
+}
+
+/** SDK遇到错误回调 */
+- (void)GeTuiSdkDidOccurError:(NSError *)error {
+    debugLog(@"\n>>>[GexinSdk error]:%@\n\n", [error localizedDescription]);
+}
 @end

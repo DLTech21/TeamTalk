@@ -76,7 +76,7 @@
     self.searchController.searchResultsDataSource=self;
     self.searchController.searchResultsDelegate=self;
 
-    NSArray *users = [[DDUserModule shareInstance] getAllMaintanceUser];
+    NSArray *users = [[DDUserModule shareInstance] getAllFriendUser];
     self.items = [NSDictionary dictionaryWithDictionary:[self sortByContactFirstLetter:users]];
     // 右侧索引颜色透明
     self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
@@ -86,7 +86,7 @@
 
     if ([[SpellLibrary instance] isEmpty]) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [[[DDUserModule shareInstance] getAllMaintanceUser] enumerateObjectsUsingBlock:^(MTTUserEntity *obj, NSUInteger idx, BOOL *stop) {
+            [[[DDUserModule shareInstance] getAllFriendUser] enumerateObjectsUsingBlock:^(MTTUserEntity *obj, NSUInteger idx, BOOL *stop) {
                 [[SpellLibrary instance] addSpellForObject:obj];
                 [[SpellLibrary instance] addDeparmentSpellForObject:obj];
             }];
@@ -100,7 +100,7 @@
 -(NSMutableDictionary *)sortByContactFirstLetter:(NSArray *)users
 {
     NSMutableDictionary *dic = [NSMutableDictionary new];
-    for (MTTUserEntity * user in [[DDUserModule shareInstance] getAllMaintanceUser]) {
+    for (MTTUserEntity * user in [[DDUserModule shareInstance] getAllFriendUser]) {
         NSString *fl = [[user.pyname substringWithRange:NSMakeRange(0, 1)] uppercaseString];
         if ([dic safeObjectForKey:fl]) {
             NSMutableArray *arr = [dic safeObjectForKey:fl];
@@ -223,7 +223,17 @@
 
 -(NSArray*)allKeys{
     return [[self.items allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        return [obj1 compare:obj2];
+        char char1 = [MTTUtil getFirstChar:obj1];
+        NSString *fl1 = [[NSString stringWithFormat:@"%c",char1] uppercaseString];
+        char char2 = [MTTUtil getFirstChar:obj2];
+        NSString *fl2 = [[NSString stringWithFormat:@"%c",char2] uppercaseString];
+        if ([fl1 isEqualToString:@"#"]) {
+            return 1;
+        }
+        if ([fl2 isEqualToString:@"#"]) {
+            return -1;
+        }
+        return [fl1 compare:fl2];
     }];
 }
 -(CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

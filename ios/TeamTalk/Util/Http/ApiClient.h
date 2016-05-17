@@ -17,4 +17,15 @@
             Success:(void (^)(id model) )success
             failure:(void (^)(NSString *message) )failure;
 
+-(void)applyFriend:(NSString *)targetId
+               msg:(NSString *)msg
+           Success:(void (^)(id model) )success
+           failure:(void (^)(NSString *message) )failure;
+-(void)confrimFriend:(NSString *)targetId
+             Success:(void (^)(id model) )success
+             failure:(void (^)(NSString *message) )failure;
+
+-(void)updateUserPush:(NSString *)clientId
+              Success:(void (^)(id model) )success
+              failure:(void (^)(NSString *message) )failure;
 @end

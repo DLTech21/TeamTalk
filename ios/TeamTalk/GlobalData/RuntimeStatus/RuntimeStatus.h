@@ -20,6 +20,7 @@
 @property(nonatomic,copy)NSString *userID;
 //@property(copy)NSString *dao;
 @property(nonatomic,copy)NSString *pushToken;
+@property(nonatomic,copy)NSString *clientId_gettui;
 @property(nonatomic,strong)NSDictionary *updateInfo;
 
 + (instancetype)instance;

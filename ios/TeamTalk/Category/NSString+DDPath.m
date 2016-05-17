@@ -12,7 +12,7 @@
 @implementation NSString (DDPath)
 + (NSString*)userExclusiveDirection
 {
-    NSString* myName = TheRuntime.user.objID;
+    NSString* myName = getUserID;
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];

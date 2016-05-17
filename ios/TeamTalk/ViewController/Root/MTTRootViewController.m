@@ -19,7 +19,8 @@
 #import "DDUserModule.h"
 #import "UIAlertView+Block.h"
 #import "DDClientState.h"
-
+#import "LoginModule.h"
+#import "SendPushTokenAPI.h"
 @interface MTTRootViewController ()<UITabBarControllerDelegate,UITabBarDelegate>
 @property(assign) NSUInteger clickCount;
 @property (nonatomic,strong) UIPanGestureRecognizer *panGestureRecognizer;
@@ -45,7 +46,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    [self autoLogin];
     
     RecentUsersViewController *recentVC= [RecentUsersViewController shareInstance];
     UIImage* conversationSelected = [[UIImage imageNamed:@"conversation_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -53,6 +54,7 @@
     recentVC.tabBarItem.tag=100;
     [recentVC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObject:RGB(26, 140, 242) forKey:NSForegroundColorAttributeName] forState:UIControlStateSelected];
     recentVC.hidesBottomBarWhenPushed =YES;
+//    UINavigationController *navRent = [[UINavigationController alloc] initWithRootViewController:recentVC];
     
     UIImage* contactSelected = [[UIImage imageNamed:@"contact_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     FriendsViewController *friendVc =[FriendsViewController new];
@@ -60,6 +62,7 @@
     friendVc.tabBarItem.tag=101;
     [friendVc.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObject:RGB(26, 140, 242) forKey:NSForegroundColorAttributeName] forState:UIControlStateSelected];
     friendVc.hidesBottomBarWhenPushed =YES;
+//    UINavigationController *navFriend = [[UINavigationController alloc] initWithRootViewController:friendVc];
     
     UIImage* findSelected = [[UIImage imageNamed:@"tab_nav_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     ContactsViewController *findVC =[[ContactsViewController alloc] init];
@@ -67,13 +70,15 @@
     findVC.tabBarItem.tag = 102;
     [findVC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObject:RGB(26, 140, 242) forKey:NSForegroundColorAttributeName] forState:UIControlStateSelected];
     findVC.hidesBottomBarWhenPushed =YES;
+//    UINavigationController *navFind = [[UINavigationController alloc] initWithRootViewController:findVC];
     
     UIImage* myProfileSelected = [[UIImage imageNamed:@"myprofile_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     MTTMyViewController *myVC =[MTTMyViewController new];
     myVC.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"我" image:[UIImage imageNamed:@"myprofile"] selectedImage:myProfileSelected];
     myVC.tabBarItem.tag=103;
     [myVC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObject:RGB(26, 140, 242) forKey:NSForegroundColorAttributeName] forState:UIControlStateSelected];
-    findVC.hidesBottomBarWhenPushed =YES;
+    myVC.hidesBottomBarWhenPushed =YES;
+//    UINavigationController *navMy = [[UINavigationController alloc] initWithRootViewController:myVC];
     
     self.viewControllers=@[recentVC,friendVc,findVC,myVC];
     self.delegate=self;
@@ -81,6 +86,7 @@
 //    self.tabBar.translucent = YES;
     
 //    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -129,7 +135,39 @@
     }
 }
 
-#pragma mark -
+#pragma mark - autologin
+-(void)autoLogin
+{
+    [[LoginModule instance] autologinWithUsername:getUserPhone password:getUserPassword success:^(MTTUserEntity *user) {
+        
+        if (user) {
+            TheRuntime.user=user ;
+            [TheRuntime updateData];
+            
+            if (TheRuntime.pushToken) {
+//                SendPushTokenAPI *pushToken = [[SendPushTokenAPI alloc] init];
+//                [pushToken requestWithObject:TheRuntime.pushToken Completion:^(id response, NSError *error) {
+//                    debugLog(@"%@", error.description);
+//                }];
+                TheRuntime.clientId_gettui = getUserCode;
+                if (TheRuntime.clientId_gettui) {
+                    [[ApiClient sharedInstance] updateUserPush:TheRuntime.clientId_gettui Success:^(id model) {
+                        
+                    } failure:^(NSString *message) {
+                        
+                    }];
+                }
+            }
+            setUserAvatar(user.avatar);
+            setUserNickname(user.nick);
+            setUserID(user.objID);
+            setIsLogin;
+        }
+    } failure:^(NSString *error) {
+//        setLogout;
+//        [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@NO];
+    }];
+}
 
 
 #pragma mark - 退出登录和被踢登录 通知
@@ -137,8 +175,8 @@
 -(void)logoutNotification:(NSNotification*)notification{
 
     [MTTUtil loginOut];
-    
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    setLogout;
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@NO];
 }
 
 -(void)kickOffUserNotification:(NSNotification*)notification

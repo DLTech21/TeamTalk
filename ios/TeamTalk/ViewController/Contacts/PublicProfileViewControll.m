@@ -24,7 +24,7 @@
 #import <Masonry/Masonry.h>
 #import "SJAvatarBrowser.h"
 #import "UIImage+UIImageAddition.h"
-
+#import "ApiClient.h"
 @interface PublicProfileViewControll ()
 
 @end
@@ -325,16 +325,17 @@
 
 -(void)startAddFriend
 {
-    MTTSessionEntity* session = [[MTTSessionEntity alloc] initWithSessionID:self.user.objID type:SessionTypeSessionTypeSingle];
-    [[ChattingMainViewController shareInstance] showChattingContentForSession:session];
-    
-    if ([[self.navigationController viewControllers] containsObject:[ChattingMainViewController shareInstance]]) {
-        [self.navigationController popToViewController:[ChattingMainViewController shareInstance] animated:YES];
-    }else
-    {
-        [self pushViewController:[ChattingMainViewController shareInstance] animated:YES];
-        
-    }
+    [SVProgressHUD show];
+    [[ApiClient sharedInstance] applyFriend:[NSString stringWithFormat:@"%ld", [self.user getOriginalID]]
+                                        msg:@"交个朋友吧！"
+                                    Success:^(id model) {
+                                        [SVProgressHUD dismiss];
+                                        [OHAlertView showAlertWithTitle:@"提示" message:[model valueForKey:@"msg"] dismissButton:@"好的"];
+                                    }
+                                    failure:^(NSString *message) {
+                                        [SVProgressHUD dismiss];
+                                        [OHAlertView showAlertWithTitle:@"提示" message:message dismissButton:@"好的"];
+                                    }];
 }
 
 -(void)callUser

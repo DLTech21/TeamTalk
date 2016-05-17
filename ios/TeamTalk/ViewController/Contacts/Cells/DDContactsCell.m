@@ -28,7 +28,7 @@
             make.centerY.equalTo(self.contentView);
             make.left.mas_equalTo(10);
         }];
-        [self.avatar setContentMode:UIViewContentModeScaleAspectFill];
+//        [self.avatar setContentMode:UIViewContentModeScaleAspectFill];
         [self.avatar setClipsToBounds:YES];
         [self.avatar.layer setCornerRadius:2.0];
         
@@ -72,6 +72,7 @@
 }
 -(void)setCellContent:(NSString *)avatar Name:(NSString *)name
 {
+    [self.avatar setBackgroundColor:[UIColor clearColor]];
     self.nameLabel.text=name;
     UIImage* placeholder = [UIImage imageNamed:@"user_placeholder"];    
     [self.avatar sd_setImageWithURL:[NSURL URLWithString:avatar] placeholderImage:placeholder];
@@ -79,6 +80,7 @@
 
 - (void)setGroupAvatar:(MTTGroupEntity *)group
 {
+    [self.avatar setBackgroundColor:RGB(228, 227, 230)];
     NSMutableArray *ids = [[NSMutableArray alloc]init];
     NSMutableArray *avatars = [[NSMutableArray alloc]init];
     NSArray* data = [[group.groupUserIds reverseObjectEnumerator] allObjects];
@@ -102,7 +104,7 @@
         }];
     }];
     
-    [self.avatar setAvatar:[avatars componentsJoinedByString:@";"] group:1];
+    [self.avatar setAvatar:[avatars componentsJoinedByString:@";"] group:1 avataImageSize:35];
 }
 
 @end
