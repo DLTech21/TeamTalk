@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#000000" />
-    <stroke android:width="1dp" android:color="#000000" />
-    <corners android:radius="0dp" />
-    <padding android:left="0dp" android:top="0dp"
-        android:right="0dp" android:bottom="0dp" />
-</shape><!-- From: file:/Users/Donal/Documents/develop/tt-android/app/src/main/res/drawable/tt_message_image_border.xml -->
