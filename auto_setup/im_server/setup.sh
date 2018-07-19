@@ -114,7 +114,7 @@ run_im_server() {
 	./restart.sh $ROUTE_SERVER
 	./restart.sh $MSG_SERVER
 	./restart.sh $FILE_SERVER
-	./restart.sh $MSFS_SERVER
+	./daeml $MSFS_SERVER
 	./restart.sh $HTTP_MSG_SERVER
 	./restart.sh $PUSH_SERVER
 	./restart.sh $DB_PROXY_SERVER
